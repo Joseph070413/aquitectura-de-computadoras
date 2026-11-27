@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Tema</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-microchip brand-icon"></i>
+            <h2>JACE<span>CORE</span></h2>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="index.html#indice" class="nav-link">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Índice</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="status-indicator">
+                <span class="dot"></span> System Online
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <section class="section tema-section">
+            <div class="tema-header">
+                <a href="index.html#indice" class="btn-back">
+                    <i class="fa-solid fa-arrow-left"></i> Volver al Índice
+                </a>
+                <h1 id="tema-titulo">Tema</h1>
+                <p id="tema-descripcion">Descripción del tema</p>
+            </div>
+
+            <nav id="tema-toc" class="tema-toc" style="display:none"></nav>
+
+            <div id="tema-contenido" class="tema-contenido"></div>
+        </section>
+    </main>
+
+    <script>
+        const temas = {
+            tema1: {
+                titulo: "01 - Arquitectura de Computo",
+                descripcion: "Unidad 1 · Modelos y tipos de arquitecturas de computadoras",
+                contenido: `
+<h2 id="s-1-1">1.1 Modelos de arquitecturas de cómputo</h2>
+<p>Las arquitecturas de cómputo son la forma en que se organizan y relacionan los componentes de una computadora para procesar información.</p>
+
+<div class="info-grid">
+    <div class="info-card">
+        <h5>Arquitecturas clásicas</h5>
+        <ul>
+            <li>Utilizan principalmente un procesador.</li>
+            <li>Las instrucciones se ejecutan de manera secuencial.</li>
+            <li>Son sencillas y fueron la base de muchas computadoras actuales.</li>
+        </ul>
+    </div>
+    <div class="info-card">
+        <h5>Arquitecturas segmentadas</h5>
+        <ul>
+            <li>Dividen la ejecución de instrucciones en varias etapas.</li>
+            <li>Permiten trabajar con diferentes instrucciones al mismo tiempo.</li>
+            <li>Buscan aumentar la velocidad de procesamiento.</li>
+        </ul>
+    </div>
+    <div class="info-card">
+        <h5>Arquitecturas de multiprocesamiento</h5>
+        <ul>
+            <li>Utilizan dos o más procesadores.</li>
+            <li>Permiten realizar varias tareas simultáneamente.</li>
+            <li>Mejoran el rendimiento cuando se necesitan ejecutar muchos procesos.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ===================== 1.1.1 ===================== -->
+<h3 id="s-1-1-1">1.1.1 Arquitecturas clásicas</h3>
+<p>Las arquitecturas clásicas corresponden a los modelos tradicionales utilizados para organizar los principales componentes de una computadora.</p>
+<p>Entre las más representativas se encuentran:</p>
+
+<h5>Arquitectura de Von Neumann</h5>
+<p>Fue propuesta por John von Neumann y se caracteriza porque los datos y las instrucciones se almacenan en una misma memoria.</p>
+<p><strong>Sus principales componentes son:</strong></p>
+<ul>
+    <li>Unidad Central de Procesamiento (CPU)</li>
+    <li>Memoria</li>
+    <li>Dispositivos de entrada</li>
+    <li>Dispositivos de salida</li>
+    <li>Buses de comunicación</li>
+</ul>
+<p><strong>Funcionamiento.</strong> El procesador realiza principalmente tres etapas:</p>
+<ol>
+    <li><strong>Búsqueda:</strong> obtiene la instrucción de la memoria.</li>
+    <li><strong>Decodificación:</strong> interpreta la instrucción.</li>
+    <li><strong>Ejecución:</strong> realiza la operación indicada.</li>
+</ol>
+<div class="pros-cons">
+    <div class="pro"><h6>Ventaja</h6><p>Presenta una estructura sencilla y flexible.</p></div>
+    <div class="contra"><h6>Desventaja</h6><p>El acceso compartido entre datos e instrucciones puede generar un cuello de botella, limitando el rendimiento.</p></div>
+</div>
+
+<h5>Arquitectura Harvard</h5>
+<p>La arquitectura Harvard se diferencia de Von Neumann porque utiliza memorias independientes para las instrucciones y los datos. Esto permite que el procesador pueda acceder a ambos de manera independiente.</p>
+<p><strong>Características</strong></p>
+<ul>
+    <li>Memoria para instrucciones.</li>
+    <li>Memoria para datos.</li>
+    <li>Buses independientes.</li>
+    <li>Permite realizar accesos simultáneos.</li>
+</ul>
+<div class="pros-cons">
+    <div class="pro"><h6>Ventaja</h6><p>Puede mejorar el rendimiento al permitir el acceso independiente a instrucciones y datos.</p></div>
+    <div class="contra"><h6>Desventaja</h6><p>Su diseño y administración son más complejos.</p></div>
+</div>
+
+<!-- ===================== 1.1.2 ===================== -->
+<h3 id="s-1-1-2">1.1.2 Arquitecturas segmentadas</h3>
+<p>La arquitectura segmentada, también conocida como <strong>pipeline</strong>, divide la ejecución de una instrucción en diferentes etapas.</p>
+<p>Mientras una instrucción se encuentra en una etapa, otra puede estar siendo procesada en una etapa diferente.</p>
+
+<h5>Etapas comunes</h5>
+<p>Un procesador puede utilizar etapas como:</p>
+<ol>
+    <li><strong>Fetch:</strong> búsqueda de la instrucción.</li>
+    <li><strong>Decode:</strong> decodificación de la instrucción.</li>
+    <li><strong>Execute:</strong> ejecución de la operación.</li>
+    <li><strong>Memory:</strong> acceso a memoria.</li>
+    <li><strong>Write Back:</strong> almacenamiento del resultado.</li>
+</ol>
+
+<h5>Objetivo</h5>
+<p>El propósito principal de la segmentación es incrementar el rendimiento del procesador, permitiendo procesar varias instrucciones de manera parcialmente simultánea.</p>
+
+<div class="pros-cons">
+    <div class="pro">
+        <h6>Ventajas</h6>
+        <ul>
+            <li>Mayor rendimiento.</li>
+            <li>Mejor aprovechamiento de los recursos del procesador.</li>
+            <li>Permite procesar varias instrucciones simultáneamente en diferentes etapas.</li>
+        </ul>
+    </div>
+    <div class="contra">
+        <h6>Desventajas</h6>
+        <ul>
+            <li>Mayor complejidad del diseño.</li>
+            <li>Pueden presentarse conflictos entre instrucciones, conocidos como riesgos del pipeline.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ===================== 1.1.3 ===================== -->
+<h3 id="s-1-1-3">1.1.3 Arquitecturas de multiprocesamiento</h3>
+<p>El multiprocesamiento consiste en utilizar dos o más procesadores o unidades de procesamiento dentro de un sistema para realizar tareas de manera simultánea o paralela.</p>
+
+<h5>Características</h5>
+<ul>
+    <li>Utiliza múltiples unidades de procesamiento.</li>
+    <li>Permite ejecutar diferentes tareas al mismo tiempo.</li>
+    <li>Mejora la capacidad de procesamiento.</li>
+    <li>Puede aumentar el rendimiento general del sistema.</li>
+</ul>
+
+<div class="pros-cons">
+    <div class="pro">
+        <h6>Ventajas</h6>
+        <ul>
+            <li>Mayor capacidad de procesamiento.</li>
+            <li>Ejecución paralela de tareas.</li>
+            <li>Mejor rendimiento en aplicaciones que pueden dividirse en procesos independientes.</li>
+            <li>Mayor disponibilidad del sistema en determinadas configuraciones.</li>
+        </ul>
+    </div>
+    <div class="contra">
+        <h6>Desventajas</h6>
+        <ul>
+            <li>Mayor costo.</li>
+            <li>Mayor complejidad de diseño y administración.</li>
+            <li>No todas las aplicaciones pueden aprovechar de manera eficiente varios procesadores.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ===================== 1.2 ===================== -->
+<h2 id="s-1-2">1.2 Análisis de los componentes</h2>
+<p>Una computadora está formada por diferentes componentes que trabajan juntos para procesar información.</p>
+<p>Los principales componentes que estudiaremos son:</p>
+
+<div class="info-grid">
+    <div class="info-card"><span class="etiqueta">Procesamiento</span><h5>CPU</h5><p>Se encarga de ejecutar instrucciones.</p></div>
+    <div class="info-card"><span class="etiqueta">Operaciones</span><h5>ALU</h5><p>Realiza operaciones aritméticas y lógicas.</p></div>
+    <div class="info-card"><span class="etiqueta">Almacenamiento temporal</span><h5>Registros</h5><p>Guardan temporalmente información que está utilizando la CPU.</p></div>
+    <div class="info-card"><span class="etiqueta">Comunicación</span><h5>Buses</h5><p>Transportan datos, direcciones y señales de control.</p></div>
+    <div class="info-card"><span class="etiqueta">Almacenamiento</span><h5>Memoria</h5><p>Almacena programas y datos.</p></div>
+    <div class="info-card"><span class="etiqueta">Periféricos</span><h5>Entrada/Salida</h5><p>Permite comunicarse con dispositivos externos.</p></div>
+</div>
+
+<!-- ===================== 1.2.1 ===================== -->
+<h3 id="s-1-2-1">1.2.1 Arquitecturas</h3>
+<p>Una arquitectura define la forma en que se organizan los componentes de una computadora y cómo se comunican entre sí.</p>
+<p>Una de las arquitecturas fundamentales estudiadas es la arquitectura de Von Neumann.</p>
+<p><strong>Sus elementos básicos incluyen:</strong></p>
+<ul>
+    <li>Unidad de procesamiento.</li>
+    <li>Memoria.</li>
+    <li>Entrada/salida.</li>
+    <li>Buses o canales de comunicación.</li>
+</ul>
+<p>Una característica fundamental de Von Neumann es el concepto de <strong>programa almacenado</strong>, donde las instrucciones y los datos pueden encontrarse en la memoria.</p>
+<figure class="fig">
+    <img src="imagenes/p16_16.png" alt="Arquitectura de Von Neumann: entrada/salida, CPU y memoria principal conectadas por bus de direcciones, bus de datos y bus de control">
+    <figcaption>Arquitectura de Von Neumann: Entrada/Salida, CPU y Memoria principal conectadas por los buses de direcciones, datos y control.</figcaption>
+</figure>
+
+<!-- ===================== 1.2.1.1 ===================== -->
+<h4 id="s-1-2-1-1">1.2.1.1 Unidad Central de Procesamiento (CPU)</h4>
+<p class="cita">"El cerebro de la computadora"</p>
+<p>La CPU, por sus siglas en inglés <em>Central Processing Unit</em>, es el componente encargado de ejecutar las instrucciones de los programas y procesar los datos.</p>
+<figure class="fig fig-chica">
+    <img src="imagenes/p18_19.png" alt="Esquema de un chip de CPU">
+    <figcaption>Esquema de una CPU.</figcaption>
+</figure>
+
+<p><strong>Entre las principales funciones de la CPU están:</strong></p>
+<ol>
+    <li><strong>Ejecutar instrucciones.</strong> Interpreta y ejecuta las instrucciones de los programas.</li>
+    <li><strong>Realizar operaciones.</strong> Procesa operaciones matemáticas y lógicas.</li>
+    <li><strong>Controlar procesos.</strong> Coordina las actividades internas de la computadora.</li>
+    <li><strong>Trabajar con memoria.</strong> Obtiene instrucciones y datos de la memoria.</li>
+    <li><strong>Comunicarse con otros componentes.</strong> Utiliza buses para intercambiar información.</li>
+</ol>
+<p>La CPU ejecuta instrucciones mediante un proceso que incluye obtenerlas, interpretarlas y realizar la operación correspondiente.</p>
+
+<p><strong>Entre los componentes fundamentales de una CPU encontramos:</strong></p>
+<ul>
+    <li><strong>Unidad de Control:</strong> coordina la ejecución de las instrucciones.</li>
+    <li><strong>ALU:</strong> realiza operaciones aritméticas y lógicas.</li>
+    <li><strong>Registros:</strong> almacenan información temporalmente.</li>
+    <li><strong>Reloj:</strong> ayuda a sincronizar las operaciones del procesador.</li>
+    <li><strong>Buses internos:</strong> permiten el intercambio de información entre las diferentes partes.</li>
+</ul>
+<p>La ALU, la unidad de control y los registros son elementos fundamentales del funcionamiento interno de la CPU.</p>
+<figure class="fig fig-chica">
+    <img src="imagenes/p19_21.png" alt="Componentes internos de la CPU: ALU, unidad de control, registros, reloj y buses">
+    <figcaption>Componentes internos de la CPU: ALU, Control Unit, Registers, Clock y Bus.</figcaption>
+</figure>
+
+<h5>Ciclo de instrucción</h5>
+<p>Una instrucción normalmente pasa por varias etapas:</p>
+<ol>
+    <li><strong>FETCH — Búsqueda:</strong> la CPU obtiene la instrucción de la memoria.</li>
+    <li><strong>DECODE — Decodificación:</strong> la CPU interpreta qué significa la instrucción.</li>
+    <li><strong>EXECUTE — Ejecución:</strong> se realiza la operación solicitada.</li>
+    <li><strong>STORE — Almacenamiento:</strong> el resultado se guarda donde corresponda.</li>
+</ol>
+<figure class="fig">
+    <img src="imagenes/p20_23.png" alt="Ciclo de instrucción: fetch, decode, execute y store entre la unidad de control, la ALU y la RAM">
+    <figcaption>Ciclo de instrucción: fetch → decode → execute → store.</figcaption>
+</figure>
+
+<!-- ===================== 1.2.1.2 ===================== -->
+<h4 id="s-1-2-1-2">1.2.1.2 Unidad Aritmético-Lógica (ALU)</h4>
+<p>La ALU (UAL) es la parte de la CPU encargada de realizar operaciones aritméticas y lógicas.</p>
+<figure class="fig">
+    <img src="imagenes/p22_26.png" alt="Chip con la leyenda ALU sobre una tarjeta electrónica">
+    <figcaption>Unidad Aritmético-Lógica (ALU).</figcaption>
+</figure>
+
+<p><strong>La ALU puede realizar operaciones matemáticas como:</strong></p>
+<ul class="sin-vineta">
+    <li>➕ <strong>Suma</strong></li>
+    <li>➖ <strong>Resta</strong></li>
+    <li>✖️ <strong>Multiplicación</strong></li>
+    <li>➗ <strong>División</strong></li>
+</ul>
+<p>Dependiendo de la arquitectura del procesador, pueden existir unidades especializadas para operaciones más complejas.</p>
+
+<h5>Operaciones lógicas</h5>
+<p>La ALU también realiza operaciones lógicas. Algunas son:</p>
+<ul>
+    <li><strong>AND:</strong> devuelve verdadero cuando las condiciones son verdaderas.</li>
+    <li><strong>OR:</strong> devuelve verdadero cuando al menos una condición es verdadera.</li>
+    <li><strong>NOT:</strong> invierte el valor lógico.</li>
+    <li><strong>Comparaciones.</strong> Por ejemplo:
+        <ul>
+            <li>10 &gt; 5 → verdadero</li>
+            <li>3 &gt; 8 → falso</li>
+        </ul>
+    </li>
+</ul>
+
+<!-- ===================== 1.2.1.3 ===================== -->
+<h4 id="s-1-2-1-3">1.2.1.3 Registros</h4>
+<figure class="fig fig-chica">
+    <img src="imagenes/p23_28.png" alt="Diagrama de la CPU con la unidad de control, el procesador, los registros y la lógica combinacional resaltando los registros">
+    <figcaption>Ubicación de los registros dentro de la CPU.</figcaption>
+</figure>
+<p>Los registros son pequeñas áreas de almacenamiento de muy alta velocidad que se encuentran dentro del procesador.</p>
+<p>Se utilizan para guardar temporalmente información que la CPU necesita durante la ejecución de instrucciones. Pueden almacenar:</p>
+<ul>
+    <li>Datos.</li>
+    <li>Instrucciones.</li>
+    <li>Direcciones.</li>
+    <li>Resultados.</li>
+    <li>Información de estado.</li>
+</ul>
+<p>Son mucho más pequeños que la memoria RAM, pero ofrecen un acceso extremadamente rápido.</p>
+
+<h5>¿Por qué son importantes los registros?</h5>
+<p>La CPU necesita trabajar rápidamente. Si tuviera que ir a la RAM cada vez que necesita un dato, el procesamiento sería menos eficiente. Por eso utiliza registros para mantener información que está utilizando en ese momento.</p>
+
+<h5>Tipos de registros</h5>
+<ol>
+    <li><strong>Contador de Programa — PC.</strong> Contiene la dirección de la siguiente instrucción que debe ejecutarse.</li>
+    <li><strong>Registro de Instrucciones — IR.</strong> Mantiene la instrucción que está siendo procesada.</li>
+    <li><strong>Registros de propósito general.</strong> Se utilizan para almacenar datos y resultados temporales.</li>
+    <li><strong>Registro de estado.</strong> Contiene información sobre determinadas condiciones producidas por las operaciones.</li>
+    <li><strong>Registro de direcciones.</strong> Contiene una dirección de memoria que se utilizará durante una operación.</li>
+</ol>
+
+<!-- ===================== 1.2.1.4 ===================== -->
+<h4 id="s-1-2-1-4">1.2.1.4 Buses</h4>
+<figure class="fig">
+    <img src="imagenes/p25_31.png" alt="Bus del sistema: bus de control, bus de dirección y bus de datos conectando CPU, memoria y entrada/salida">
+    <figcaption>Bus del sistema: bus de control, bus de dirección y bus de datos conectando la CPU, la memoria y la entrada/salida.</figcaption>
+</figure>
+<p>Los buses son sistemas de comunicación que permiten transferir información entre diferentes componentes de la computadora.</p>
+<p><strong>Conectan componentes como:</strong></p>
+<ul>
+    <li>CPU</li>
+    <li>Memoria</li>
+    <li>Entrada/salida</li>
+    <li>Otros dispositivos</li>
+</ul>
+<p>Un bus puede transportar datos, direcciones y señales de control.</p>
+
+<h5>Ejemplo: la CPU quiere leer un dato de la memoria</h5>
+<ul class="sin-vineta">
+    <li>🟢 <strong>Bus de direcciones:</strong> indica "Quiero el dato que está en esta dirección."</li>
+    <li>🟠 <strong>Bus de control:</strong> indica "Quiero realizar una operación de lectura."</li>
+    <li>🔵 <strong>Bus de datos:</strong> transporta "Aquí está el dato solicitado."</li>
+</ul>
+<figure class="fig">
+    <img src="imagenes/p26_34.png" alt="Buses de direcciones, datos y control conectados a entrada/salida, CPU y memoria principal">
+    <figcaption>Bus de direcciones, bus de datos y bus de control.</figcaption>
+</figure>
+
+<!-- ===================== 1.2.2 ===================== -->
+<h3 id="s-1-2-2">1.2.2 Memoria</h3>
+<p>La memoria de una computadora es el conjunto de componentes utilizados para almacenar datos, instrucciones y resultados que necesita el sistema.</p>
+<p><strong>La memoria permite que la computadora pueda:</strong></p>
+<ul>
+    <li>Guardar información.</li>
+    <li>Recuperar datos.</li>
+    <li>Ejecutar programas.</li>
+    <li>Procesar instrucciones.</li>
+    <li>Mantener información temporalmente o de forma permanente.</li>
+</ul>
+<p>No toda la memoria funciona de la misma manera. Existen diferentes tipos dependiendo de:</p>
+<ul>
+    <li>Velocidad</li>
+    <li>Capacidad</li>
+    <li>Duración de la información</li>
+    <li>Costo</li>
+</ul>
+<figure class="fig">
+    <img src="imagenes/p28_37.png" alt="Pirámide de memoria: registros del procesador, memoria caché, memoria RAM y memoria virtual">
+    <figcaption>Jerarquía de memoria: registros del procesador, memoria caché, memoria RAM y memoria virtual.</figcaption>
+</figure>
+
+<!-- ===================== 1.2.2.1 ===================== -->
+<h4 id="s-1-2-2-1">1.2.2.1 Conceptos básicos del manejo de la memoria</h4>
+
+<h5>¿Qué es el manejo de memoria?</h5>
+<p>Es el conjunto de técnicas que utiliza el sistema operativo para administrar el espacio de memoria que necesitan los programas. Se encarga de asignar, controlar, proteger y liberar memoria.</p>
+
+<h5>Administración de memoria</h5>
+<ul>
+    <li>Asigna espacio a los procesos.</li>
+    <li>Lleva el control de qué espacio está ocupado y cuál está disponible.</li>
+    <li>Libera memoria cuando un programa termina.</li>
+    <li>Evita que un proceso interfiera con otro.</li>
+</ul>
+
+<h5>Memoria física y memoria lógica</h5>
+<ul>
+    <li><strong>Memoria física:</strong> espacio real disponible en el equipo.</li>
+    <li><strong>Memoria lógica:</strong> espacio de direcciones que utiliza cada programa.</li>
+</ul>
+
+<h5>Memoria virtual</h5>
+<ul>
+    <li>Permite que un programa utilice un espacio de memoria mayor al disponible físicamente.</li>
+    <li>Utiliza almacenamiento secundario como apoyo.</li>
+    <li>Es más lenta que acceder directamente a la memoria física.</li>
+</ul>
+
+<h5>Asignación de memoria</h5>
+<p>El sistema operativo decide cuánto espacio necesita cada proceso y se lo asigna.</p>
+
+<h5>Liberación de memoria</h5>
+<p>Cuando un proceso termina, el espacio utilizado se libera para que pueda ser utilizado nuevamente.</p>
+
+<h5>Paginación</h5>
+<ul>
+    <li>Divide la memoria lógica en páginas de tamaño fijo.</li>
+    <li>La memoria física se divide en marcos.</li>
+    <li>Permite administrar la memoria de manera más eficiente.</li>
+</ul>
+
+<h5>Segmentación</h5>
+<p>Divide un programa en partes lógicas, por ejemplo:</p>
+<ul>
+    <li>Código</li>
+    <li>Datos</li>
+    <li>Pila</li>
+    <li>Heap</li>
+</ul>
+<p>Los segmentos pueden tener diferentes tamaños.</p>
+
+<h5>Fragmentación</h5>
+<p>Ocurre cuando parte de la memoria no puede aprovecharse eficientemente.</p>
+<ul>
+    <li><strong>Interna:</strong> espacio desperdiciado dentro de un bloque asignado.</li>
+    <li><strong>Externa:</strong> espacios libres pequeños distribuidos entre bloques ocupados.</li>
+</ul>
+
+<h5>Protección de memoria</h5>
+<p>Evita que un programa acceda o modifique indebidamente la memoria utilizada por otro programa o por el sistema operativo.</p>
+<figure class="fig">
+    <img src="imagenes/p29_40.png" alt="Pirámide de memoria: registros, caché, RAM y memoria virtual">
+    <figcaption>Registros del procesador, memoria caché, memoria RAM y memoria virtual (memoria física y memoria virtual).</figcaption>
+</figure>
+
+<!-- ===================== 1.2.2.2 ===================== -->
+<h4 id="s-1-2-2-2">1.2.2.2 Memoria principal</h4>
+<figure class="fig">
+    <img src="imagenes/p30_43.png" alt="Módulos de memoria RAM instalados en una tarjeta madre">
+    <figcaption>Módulos de memoria RAM en una tarjeta madre.</figcaption>
+</figure>
+<p>La memoria principal es la memoria que utiliza la computadora para guardar temporalmente los datos y programas que están siendo utilizados por el procesador.</p>
+<p>La memoria principal está formada principalmente por la <strong>RAM</strong>.</p>
+
+<h5>¿Para qué sirve?</h5>
+<ul>
+    <li>Guarda los programas que están en ejecución.</li>
+    <li>Almacena temporalmente los datos que necesita el procesador.</li>
+    <li>Permite que los programas funcionen de manera rápida.</li>
+    <li>Su contenido se pierde cuando se apaga la computadora.</li>
+</ul>
+
+<h5>Características</h5>
+<ul>
+    <li>Guarda temporalmente datos y programas en uso.</li>
+    <li>Es mucho más rápida que el almacenamiento permanente.</li>
+    <li>Pierde la información al apagar el equipo.</li>
+    <li>Puede encontrarse en capacidades como 4 GB, 8 GB, 16 GB, etc.</li>
+</ul>
+
+<h5>¿Cómo funciona?</h5>
+<p class="flujo">Almacenamiento → RAM → CPU</p>
+<p>El programa se carga desde el almacenamiento hacia la RAM, y posteriormente el procesador puede acceder a los datos que necesita.</p>
+<figure class="fig">
+    <img src="imagenes/p31_45.png" alt="Módulos de memoria RAM junto al procesador en una tarjeta madre">
+    <figcaption>Memoria RAM junto al procesador.</figcaption>
+</figure>
+
+<!-- ===================== 1.2.2.3 ===================== -->
+<h4 id="s-1-2-2-3">1.2.2.3 Memoria caché</h4>
+<figure class="fig">
+    <img src="imagenes/p32_47.png" alt="Memoria caché L1, L2 y L3 en un procesador con dos núcleos">
+    <figcaption>Memoria caché: niveles L1 (datos e instrucciones), L2 y L3 compartida.</figcaption>
+</figure>
+<p>La memoria caché es una memoria muy rápida y de poca capacidad que se encuentra cerca del procesador. Su función es guardar temporalmente los datos e instrucciones que la CPU utiliza con mayor frecuencia.</p>
+
+<h5>¿Para qué sirve?</h5>
+<ul>
+    <li>Acelera el procesamiento de información.</li>
+    <li>Reduce el tiempo que la CPU espera para obtener datos.</li>
+    <li>Evita acceder constantemente a la memoria RAM.</li>
+    <li>Mejora el rendimiento del equipo.</li>
+</ul>
+
+<h5>Tipos de memoria caché</h5>
+<ul>
+    <li><strong>L1:</strong> es la más rápida y pequeña. Está dentro del procesador.</li>
+    <li><strong>L2:</strong> tiene mayor capacidad que L1, pero es un poco más lenta.</li>
+    <li><strong>L3:</strong> es más grande y generalmente es compartida entre varios núcleos.</li>
+</ul>
+
+<h5>¿Cómo funciona?</h5>
+<p class="flujo">CPU → Caché → RAM → Almacenamiento</p>
+<p>Cuando la CPU necesita un dato, primero busca en la caché.</p>
+<ul>
+    <li>Si encuentra el dato: acceso rápido (acierto de caché).</li>
+    <li>Si no lo encuentra: debe buscarlo en la RAM, lo que tarda más.</li>
+</ul>
+<figure class="fig">
+    <img src="imagenes/p33_49.png" alt="Flujo de datos entre CPU, caché y RAM">
+    <figcaption>La CPU consulta primero la caché; si no encuentra el dato, lo busca en la RAM, lo guarda en la caché y lo envía a la CPU.</figcaption>
+</figure>
+
+<!-- ===================== 1.2.3 ===================== -->
+<h3 id="s-1-2-3">1.2.3 Manejo de la entrada/salida</h3>
+
+<h4 id="s-1-2-3-1">1.2.3.1 Módulos de entrada/salida</h4>
+<p>Los módulos de entrada/salida (E/S) son componentes que permiten la comunicación entre el procesador y los dispositivos periféricos de una computadora, como el teclado, mouse, impresora, disco duro, monitor, etc.</p>
+<figure class="fig fig-chica">
+    <img src="imagenes/p35_52.png" alt="Periféricos de entrada y de salida conectados a la computadora">
+    <figcaption>Periféricos de entrada (teclado, ratón, scanner, micrófono, cámara digital, video player) y de salida (monitor, impresora, filmadora, plotter), además de diskette y disco duro.</figcaption>
+</figure>
+
+<h4 id="s-1-2-3-2">1.2.3.2 Entrada/salida programada</h4>
+<p>La E/S programada es una de las formas más sencillas de E/S, donde la CPU realiza todo el trabajo. Las instrucciones de E/S se escriben en programas informáticos, y cada transferencia de datos se inicia mediante una instrucción del programa. La CPU gestiona las transferencias de datos entre todos los dispositivos y la memoria.</p>
+<p>En la E/S programada, la CPU controla todos los aspectos de la transferencia de datos, como iniciar las operaciones de E/S, supervisar continuamente el estado de los dispositivos, transferir datos entre dispositivos y registros, mover datos entre registros y memoria, y determinar cuándo finaliza la operación.</p>
+
+<h4 id="s-1-2-3-3">1.2.3.3 Entrada/salida mediante interrupciones</h4>
+<p>Permite que un dispositivo avise a la CPU cuando necesita atención o cuando ha terminado una operación.</p>
+<p>La CPU inicia una operación de E/S y puede continuar realizando otras tareas; cuando el dispositivo termina o necesita atención, envía una señal de interrupción al procesador, haciendo que este atienda temporalmente la solicitud. Así la CPU no entra en bucles de espera pasiva o sondeo (<em>polling</em>), permite atender eventos externos de manera casi inmediata y facilita que el sistema maneje varios dispositivos y procesos a la vez de forma ordenada.</p>
+<figure class="fig">
+    <img src="imagenes/p37_55.png" alt="Diagrama de E/S por interrupciones: programa principal y rutina de servicio">
+    <figcaption>El programa inicia el periférico y sigue ejecutándose; cuando se activa la línea de interrupción, se ejecuta la rutina de servicio, que realiza la transferencia de datos, y después continúa el programa principal.</figcaption>
+</figure>
+
+<h4 id="s-1-2-3-4">1.2.3.4 Acceso directo a memoria</h4>
+<p>Es una característica del hardware que permite a los dispositivos periféricos transferir datos directamente hacia y desde la memoria del sistema sin la intervención constante de la unidad central de procesamiento (CPU).</p>
+<p>Muchos sistemas hardware utilizan DMA, incluyendo controladores de unidades de disco, tarjetas gráficas y tarjetas de sonido. DMA es una característica esencial en todos los ordenadores modernos, ya que permite a dispositivos de diferentes velocidades comunicarse sin someter a la CPU a una carga masiva de interrupciones.</p>
+<p>Una transferencia DMA consiste principalmente en copiar un bloque de memoria de un dispositivo a otro. En lugar de que la CPU inicie la transferencia, la transferencia se lleva a cabo por el controlador DMA. Un ejemplo típico es mover un bloque de memoria desde una memoria externa a una interna más rápida.</p>
+<p>Tal operación no ocupa al procesador y, por ende, éste puede efectuar otras tareas. Las transferencias DMA son esenciales para aumentar el rendimiento de aplicaciones que requieren muchos recursos.</p>
+<figure class="fig">
+    <img src="imagenes/p39_58.png" alt="Comparación entre E/S programada (PIO) y acceso directo a memoria (DMA)">
+    <figcaption>PIO: los datos pasan por la CPU para llegar a la RAM. DMA: los datos van directamente a la RAM sin pasar por la CPU. (Fuente de la imagen: Computer Desktop Encyclopedia, 1998.)</figcaption>
+</figure>
+
+<h4 id="s-1-2-3-5">1.2.3.5 Canales y procesadores de entrada/salida</h4>
+<p>Los canales y procesadores de entrada/salida son la evolución natural de la E/S programada, por interrupciones y por DMA. En lugar de que la CPU se encargue de cada transferencia, se le delega todo el trabajo de E/S a un módulo especializado que tiene su propia capacidad de procesamiento, de modo que la CPU queda casi totalmente libre para ejecutar programas.</p>
+
+<h5>¿Qué es un canal de E/S?</h5>
+<p>Es un módulo de hardware dedicado que controla uno o varios dispositivos periféricos y gestiona por sí mismo las transferencias de datos entre ellos y la memoria principal. La CPU solo le indica qué operación se debe realizar y el canal se encarga del resto.</p>
+<ul>
+    <li>Tiene acceso directo a la memoria, igual que el DMA.</li>
+    <li>Ejecuta sus propias instrucciones, llamadas <strong>programas de canal</strong>, que están guardados en memoria.</li>
+    <li>Avisa a la CPU mediante una interrupción cuando termina toda la operación, no cada vez que transfiere un dato.</li>
+</ul>
+
+<h5>¿Qué es un procesador de E/S (IOP)?</h5>
+<p>Es un canal más avanzado: un procesador independiente, con su propio conjunto de instrucciones y memoria local, dedicado únicamente a las tareas de entrada/salida. Puede incluso ejecutar programas completos de E/S, como formatear datos, detectar errores o preparar los bloques que se enviarán a un dispositivo, sin ayuda de la CPU principal.</p>
+
+<h5>¿Cómo funciona?</h5>
+<p class="flujo">CPU → Canal / IOP → Dispositivos periféricos</p>
+<ul>
+    <li>La CPU prepara en memoria el programa de canal y le ordena al canal que lo inicie.</li>
+    <li>El canal ejecuta el programa, controla los dispositivos y mueve los datos desde o hacia la memoria.</li>
+    <li>Mientras tanto, la CPU continúa trabajando en otras tareas.</li>
+    <li>Al terminar, el canal envía una interrupción para avisar a la CPU que la operación finalizó o que ocurrió un error.</li>
+</ul>
+
+<h5>Tipos de canales</h5>
+<ul>
+    <li><strong>Canal selector:</strong> atiende un solo dispositivo a la vez durante toda la transferencia. Es ideal para dispositivos rápidos, como los discos.</li>
+    <li><strong>Canal multiplexor por bytes:</strong> atiende varios dispositivos lentos al mismo tiempo, alternando byte por byte entre ellos. Se usa con terminales e impresoras.</li>
+    <li><strong>Canal multiplexor por bloques:</strong> combina ambos enfoques, ya que alterna entre varios dispositivos rápidos transfiriendo bloques completos de datos.</li>
+</ul>
+
+<h5>Diferencia con el DMA</h5>
+<ul>
+    <li>El DMA solo copia bloques de datos entre el dispositivo y la memoria; la CPU debe configurarlo en cada transferencia.</li>
+    <li>El canal o IOP tiene inteligencia propia: ejecuta programas, maneja varios dispositivos y atiende errores sin involucrar a la CPU.</li>
+</ul>
+
+<h5>Ventajas</h5>
+<ul>
+    <li>Libera casi por completo a la CPU de las tareas de E/S.</li>
+    <li>Permite manejar muchos dispositivos de distintas velocidades de forma simultánea.</li>
+    <li>Mejora el rendimiento general del sistema.</li>
+    <li>Reduce el número de interrupciones que debe atender la CPU.</li>
+</ul>
+
+<h5>Dónde se usan</h5>
+<p>Se utilizan sobre todo en <em>mainframes</em> y servidores de gran tamaño, donde se manejan grandes volúmenes de datos y muchos dispositivos al mismo tiempo, como bancos, aerolíneas y centros de datos.</p>
+
+<!-- ===================== 1.2.4 ===================== -->
+<h3 id="s-1-2-4">1.2.4 Buses</h3>
+<p>Los buses son canales de comunicación que permiten transportar información entre los diferentes componentes de una computadora, como el procesador, la memoria y los dispositivos de entrada y salida.</p>
+
+<h4 id="s-1-2-4-1">1.2.4.1 Tipos de buses</h4>
+<p>Los buses son caminos de comunicación que permiten intercambiar información entre los componentes de una computadora. Los principales son:</p>
+
+<h5>🔹 Bus de datos</h5>
+<ul>
+    <li>Se encarga de transportar los datos entre el procesador, memoria y otros dispositivos.</li>
+    <li>Su tamaño se mide en bits, por ejemplo, 8, 16, 32 o 64 bits.</li>
+    <li>Mientras más bits pueda transportar, mayor cantidad de información puede manejar al mismo tiempo.</li>
+</ul>
+
+<h5>🔹 Bus de direcciones</h5>
+<ul>
+    <li>Indica dónde se encuentra la información que el procesador necesita leer o dónde debe almacenarla.</li>
+    <li>Comunica al procesador con una posición específica de la memoria.</li>
+    <li>Su tamaño determina la cantidad de memoria que puede direccionar.</li>
+</ul>
+
+<h5>🔹 Bus de control</h5>
+<ul>
+    <li>Transporta las señales de control que coordinan las operaciones de la computadora.</li>
+    <li>Indica acciones como leer, escribir, activar dispositivos o solicitar interrupciones.</li>
+    <li>Permite que los diferentes componentes trabajen de manera coordinada.</li>
+</ul>
+
+<h4 id="s-1-2-4-2">1.2.4.2 Estructura de los buses</h4>
+<p>La estructura de un bus está formada por un conjunto de líneas o conductores que permiten transmitir información entre los componentes de la computadora.</p>
+<ul>
+    <li><strong>Líneas de datos:</strong> transportan la información que se está procesando.</li>
+    <li><strong>Líneas de direcciones:</strong> transportan las direcciones que indican dónde se encuentra o dónde se guardará un dato.</li>
+    <li><strong>Líneas de control:</strong> transportan señales que coordinan las operaciones.</li>
+    <li><strong>Ancho del bus:</strong> es la cantidad de bits que puede transportar el bus al mismo tiempo. Por ejemplo, un bus de 32 bits puede transportar 32 bits de información simultáneamente.</li>
+</ul>
+<figure class="fig">
+    <img src="imagenes/p45_65.png" alt="Bus de datos bidireccional conectando microprocesador, unidad de memoria y sistema de entrada y salida">
+    <figcaption>Un bus de datos bidireccional conecta el microprocesador (ALU, UC y reloj), la unidad de memoria (ROM y RAM) y el sistema de entrada y salida hacia los periféricos.</figcaption>
+</figure>
+
+<h4 id="s-1-2-4-3">1.2.4.3 Jerarquías de buses</h4>
+<p>La jerarquía de buses es la forma en que se organizan los diferentes buses de una computadora según su velocidad, función y tipo de dispositivos que conectan.</p>
+<ul>
+    <li><strong>🔹 Bus principal:</strong> es el bus que conecta los componentes más importantes del sistema. Generalmente necesita trabajar a alta velocidad.</li>
+    <li><strong>🔹 Bus de expansión:</strong> se utiliza para conectar dispositivos adicionales al sistema. Por ejemplo, tarjetas de sonido, red u otros dispositivos de expansión.</li>
+    <li><strong>🔹 Bus de entrada/salida (E/S):</strong> permite la comunicación entre la computadora y los dispositivos periféricos. Algunos ejemplos son teclado, mouse, impresora, discos y dispositivos USB.</li>
+</ul>
+<figure class="fig">
+    <img src="imagenes/p47_69.png" alt="Jerarquía de buses: bus local, bus del sistema y bus de expansión">
+    <figcaption>Jerarquía: el procesador se conecta por el bus local a la caché/adaptador; el bus del sistema conecta la memoria principal y dispositivos como SCSI, Firewire, gráficos, video y LAN; el bus de expansión conecta FAX, módem y puerto serie.</figcaption>
+</figure>
+<h5>Bus por jerarquía: el bus estándar de E/S</h5>
+<p>Este es un bus usado para conectar dispositivos de E/S de baja velocidad (ratón, módems, tarjetas de sonido).</p>
+<figure class="fig fig-chica">
+    <img src="imagenes/p47_68.png" alt="Bus estándar de E/S con los puertos de una tarjeta madre">
+    <figcaption>Puertos del bus estándar de E/S en una tarjeta madre.</figcaption>
+</figure>
+
+<!-- ===================== 1.2.5 ===================== -->
+<h3 id="s-1-2-5">1.2.5 Interrupciones</h3>
+<p>Las interrupciones son señales que avisan al procesador de que necesita atender un evento o tarea. Esto permite que la CPU detenga temporalmente lo que está haciendo, atienda la solicitud y después continúe con su trabajo.</p>
+<h5>🔹 Tipos de interrupciones</h5>
+<ul>
+    <li><strong>De hardware:</strong> son generadas por dispositivos físicos, como el teclado, mouse, disco o impresora.</li>
+    <li><strong>De software:</strong> son generadas por un programa para solicitar un servicio al sistema.</li>
+    <li><strong>Internas:</strong> ocurren debido a situaciones dentro del procesador, como errores o excepciones.</li>
+</ul>
+`
+            },
+            tema2: {
+                titulo: "02 - Estructura y Funcionamiento de la CPU",
+                descripcion: "Unidad 2 · Organización, registros, ciclo de instrucción y casos de estudio",
+                contenido: `
+<h2 id="s-2-0">Estructura y funciones de la Unidad Central de Procesamiento</h2>
+<p>En esta unidad se estudia cómo está organizada la CPU, cómo se estructuran sus registros, de qué manera ejecuta las instrucciones y qué procesadores reales sirven como caso de estudio.</p>
+
+<!-- ===================== 2.1 ===================== -->
+<h3 id="s-2-1">2.1 Organización del procesador</h3>
+<p>El procesador, también conocido como <strong>CPU (Central Processing Unit)</strong>, es el componente encargado de interpretar y ejecutar las instrucciones de los programas.</p>
+<p>Su función principal es coordinar las operaciones internas del sistema y procesar la información necesaria para el funcionamiento de la computadora. Para lograrlo, utiliza diferentes componentes internos como registros, buses y unidades de control que trabajan de manera sincronizada.</p>
+
+<!-- ===================== 2.2 ===================== -->
+<h3 id="s-2-2">2.2 Estructura de registros</h3>
+<p>Los registros son pequeñas unidades de almacenamiento de alta velocidad ubicadas dentro de la CPU. Su función es guardar temporalmente datos, instrucciones y direcciones de memoria que serán utilizados durante la ejecución de programas.</p>
+<p>Debido a su rapidez, permiten reducir accesos constantes a la memoria RAM y mejorar el rendimiento general del procesador.</p>
+
+<h4 id="s-2-2-1">2.2.1 Registros visibles para el usuario</h4>
+<p>Los registros visibles para el usuario son aquellos a los que el programador puede acceder directamente mediante instrucciones del software. Se utilizan principalmente para almacenar datos temporales, direcciones de memoria y resultados de operaciones durante la ejecución de programas.</p>
+<figure class="fig fig-chica">
+    <img src="imagenes/u2_memoria_lectura_escritura.png" alt="Lectura y escritura en memoria: registro de dirección, celda de memoria y registro de palabra">
+    <figcaption>Lectura y escritura en memoria: el registro de dirección activa una celda de memoria y la información pasa por el registro de palabra.</figcaption>
+</figure>
+
+<h4 id="s-2-2-2">2.2.2 Registros de control y de estado</h4>
+<p>Estos registros permiten supervisar y coordinar la ejecución de instrucciones:</p>
+<ul>
+    <li><strong>Contador de Programa (PC):</strong> dirección de la próxima instrucción.</li>
+    <li><strong>Registro de Instrucción (IR):</strong> instrucción que se está ejecutando.</li>
+    <li><strong>Registros de Estado/Flags:</strong> indican condiciones como cero, negativo, desbordamiento o acarreo.</li>
+    <li><strong>Registro de Control.</strong></li>
+</ul>
+<figure class="fig">
+    <img src="imagenes/u2_cpu_diagrama_bloques.png" alt="Diagrama de la CPU: unidad de control, procesador con registros y lógica combinacional, memoria principal, entrada y salida">
+    <figcaption>Estructura de la CPU: la unidad de control coordina al procesador (registros y lógica combinacional), la memoria principal, la entrada y la salida.</figcaption>
+</figure>
+
+<h4 id="s-2-2-3">2.2.3 Ejemplos de registros de CPU reales</h4>
+<div class="info-grid">
+    <div class="info-card">
+        <h5>x86 (Intel/AMD)</h5>
+        <ul>
+            <li><strong>EAX, EBX, ECX, EDX:</strong> registros de propósito general.</li>
+            <li><strong>EIP:</strong> contador de programa.</li>
+            <li><strong>EFLAGS:</strong> registro de estado con banderas (carry, zero, sign, overflow).</li>
+        </ul>
+    </div>
+    <div class="info-card">
+        <h5>ARM</h5>
+        <ul>
+            <li><strong>R0–R15:</strong> registros de propósito general.</li>
+            <li><strong>PC (Program Counter):</strong> dirección de la instrucción actual.</li>
+            <li><strong>CPSR (Current Program Status Register):</strong> contiene flags y modo de ejecución.</li>
+        </ul>
+    </div>
+</div>
+<figure class="fig fig-chica">
+    <img src="imagenes/u2_8088_registros.png" alt="Esquema del microprocesador 8088: flags, registros de uso general, de segmento y de puntero, ALU y unidad de control">
+    <figcaption>Esquema del microprocesador 8088: registro de estado (FLAGS), registros de uso general (AX, BX, CX, DX), de segmento (CS, DS, SS, ES) y de puntero (IP, SP, BP, SI, DI), conectados por el bus interno con la ALU y la unidad de control.</figcaption>
+</figure>
+
+<!-- ===================== 2.3 ===================== -->
+<h3 id="s-2-3">2.3 El ciclo de instrucción</h3>
+<p>El ciclo de instrucción describe cómo la CPU procesa cada orden:</p>
+<ol>
+    <li><strong>Fetch (Captura):</strong> la CU obtiene la instrucción desde la memoria usando el PC.</li>
+    <li><strong>Decode (Decodificación):</strong> el decodificador interpreta el código de operación.</li>
+    <li><strong>Execute (Ejecución):</strong> la ALU realiza la operación indicada.</li>
+    <li><strong>Memory Access (Acceso a memoria, si aplica):</strong> se leen o escriben datos en memoria.</li>
+    <li><strong>Write Back (Escritura de resultado):</strong> el resultado se guarda en un registro o en memoria.</li>
+</ol>
+<figure class="fig">
+    <img src="imagenes/u2_ciclo_instruccion.png" alt="Ciclo de instrucción: fetch desde la RAM, decode en la unidad de control, execute en la ALU y store">
+    <figcaption>Ciclo de instrucción: fetch (RAM) → decode (unidad de control) → execute (unidad aritmético-lógica) → store.</figcaption>
+</figure>
+
+<h4 id="s-2-3-1">2.3.1 Ciclo Fetch-Decode-Execute</h4>
+<p>La CPU sigue un ciclo básico para ejecutar instrucciones:</p>
+<ul>
+    <li><strong>Fetch (Captura):</strong> la unidad de control obtiene la instrucción desde la memoria principal (RAM) usando el contador de programa (PC).</li>
+    <li><strong>Decode (Decodificación):</strong> la instrucción es interpretada por la unidad de control, que determina qué operación realizar y qué recursos usar.</li>
+    <li><strong>Execute (Ejecución):</strong> la unidad aritmético-lógica (ALU) o la unidad de coma flotante ejecuta la operación, y los resultados se almacenan en registros o memoria.</li>
+</ul>
+
+<h4 id="s-2-3-2">2.3.2 Segmentación de instrucciones</h4>
+<p>La segmentación permite que varias instrucciones se procesen en paralelo, dividiendo el ciclo en etapas:</p>
+<ol>
+    <li><strong>Etapa 1:</strong> Captura (Fetch).</li>
+    <li><strong>Etapa 2:</strong> Decodificación.</li>
+    <li><strong>Etapa 3:</strong> Ejecución.</li>
+    <li><strong>Etapa 4:</strong> Acceso a memoria (si es necesario).</li>
+    <li><strong>Etapa 5:</strong> Escritura de resultados.</li>
+</ol>
+
+<h4 id="s-2-3-3">2.3.3 Conjunto de instrucciones, características y funciones</h4>
+<p>El <strong>ISA (Instruction Set Architecture)</strong> define las operaciones que la CPU puede ejecutar. Sus características principales son:</p>
+<ul>
+    <li><strong>Tipos de instrucciones:</strong> aritméticas, lógicas, de control de flujo, de acceso a memoria, de entrada/salida.</li>
+    <li><strong>Modos de direccionamiento:</strong> cómo se accede a los datos (directo, indirecto, inmediato, por registro).</li>
+    <li><strong>Tamaño de palabra:</strong> número de bits que la CPU procesa (32, 64 bits).</li>
+</ul>
+<h5>Funciones clave</h5>
+<ul>
+    <li>Ejecutar operaciones matemáticas y lógicas.</li>
+    <li>Controlar el flujo de programas (saltos, bucles).</li>
+    <li>Gestionar la comunicación con memoria y periféricos.</li>
+    <li>Coordinar procesos mediante interrupciones.</li>
+</ul>
+
+<h4 id="s-2-3-4">2.3.4 Modos de direccionamiento</h4>
+<p>Son la forma en la que una instrucción le indica al procesador dónde se encuentra el operando que debe utilizar. Se dividen en 8 modos de direccionamiento:</p>
+
+<div class="info-grid">
+    <div class="info-card">
+        <h5>1. Direccionamiento inmediato</h5>
+        <p>El dato está directamente dentro de la instrucción. Ejemplo:</p>
+        <p><span class="flujo">MOV R1, #10</span></p>
+    </div>
+    <div class="info-card">
+        <h5>2. Directo o absoluto</h5>
+        <p>La instrucción contiene la dirección de memoria donde se encuentra el dato. Ejemplo:</p>
+        <p><span class="flujo">MOV R1, [1000]</span></p>
+    </div>
+    <div class="info-card">
+        <h5>3. Indirecto</h5>
+        <p>La dirección indicada por la instrucción no contiene directamente el dato, sino otra dirección que apunta al dato.</p>
+    </div>
+    <div class="info-card">
+        <h5>4. Mediante registro</h5>
+        <p>El dato se encuentra en un registro de la CPU. Ejemplo:</p>
+        <p><span class="flujo">ADD R1, R2</span></p>
+    </div>
+    <div class="info-card">
+        <h5>5. Indirecto mediante registro</h5>
+        <p>El registro contiene una dirección de memoria, no el dato directamente. Ejemplo:</p>
+        <p><span class="flujo">MOV R1, [R2]</span></p>
+    </div>
+    <div class="info-card">
+        <h5>6. Indexado</h5>
+        <p>La dirección efectiva se obtiene sumando una dirección base y un índice:</p>
+        <p><span class="flujo">Dirección efectiva = Dirección base + Índice</span></p>
+        <p>Ejemplo: con DB = 1000 e índice 20, DE = 1000 + 20 = 1020. Es especialmente útil para trabajar con arreglos.</p>
+    </div>
+    <div class="info-card">
+        <h5>7. Basado en registro</h5>
+        <p>Es parecido al indexado, pero se utiliza un registro como base. Ejemplo: registro base = 1000 y desplazamiento = 20, entonces DE = 1000 + 20 = 1020.</p>
+        <p>Es muy utilizado para acceder a estructuras de datos, variables locales y datos almacenados en memoria.</p>
+    </div>
+    <div class="info-card">
+        <h5>8. Relativo</h5>
+        <p>La dirección se obtiene utilizando la dirección actual de ejecución y un desplazamiento:</p>
+        <p><span class="flujo">Dirección efectiva = PC + desplazamiento</span></p>
+        <p>Donde PC es el Program Counter (contador de programa), que contiene la dirección de la siguiente instrucción que debe ejecutarse.</p>
+    </div>
+</div>
+
+<!-- ===================== 2.4 ===================== -->
+<h3 id="s-2-4">2.4 Casos de estudio de CPU reales</h3>
+<p>Son aquellos que consisten en tomar un procesador real y analizar características como su arquitectura, núcleos, frecuencia, etc. Entre los ejemplos más claros tenemos:</p>
+
+<h5>Intel Core (arquitectura x86-64)</h5>
+<figure class="fig fig-chica">
+    <img src="imagenes/u2_intel_core.png" alt="Procesador Intel Core visto por ambos lados">
+    <figcaption>Procesador Intel Core.</figcaption>
+</figure>
+
+<h5>AMD Ryzen (arquitectura x86-64)</h5>
+<figure class="fig fig-chica">
+    <img src="imagenes/u2_amd_opteron.png" alt="Procesador AMD Opteron">
+    <figcaption>Procesador AMD (en la imagen, un AMD Opteron) de arquitectura x86-64.</figcaption>
+</figure>
+
+<h5>ARM Cortex</h5>
+<p>Son procesadores para dispositivos móviles basados en una arquitectura ARM centrada en un enfoque <strong>RISC (Reduced Instruction Set Computer)</strong>.</p>
+<figure class="fig">
+    <img src="imagenes/u2_arm_microcontroladores.png" alt="Microcontroladores ARM Cortex LPC1114, LPC1343 y EFM32">
+    <figcaption>Microcontroladores basados en ARM Cortex (LPC1114, LPC1343, EFM32).</figcaption>
+</figure>
+
+<h5>Apple Silicon (ARM)</h5>
+<p>Estos procesadores utilizan una arquitectura basada en ARM y emplean un diseño conocido como <strong>SoC (System on a Chip)</strong>.</p>
+<figure class="fig">
+    <img src="imagenes/u2_apple_m1.png" alt="Chip Apple Silicon M1 y su esquema interno con CPU, GPU, Neural Engine, caché y DRAM">
+    <figcaption>Apple Silicon M1: CPU, GPU, Neural Engine, caché y memoria DRAM integrados en un solo chip.</figcaption>
+</figure>
+
+<h5>Intel 8086</h5>
+<p>Fue introducido en 1978 y es uno de los procesadores fundamentales en la historia de la arquitectura x86. Permite estudiar conceptos que son mucho más sencillos de visualizar que en una CPU moderna.</p>
+<figure class="fig">
+    <img src="imagenes/u2_intel_8086_chip.png" alt="Encapsulado del procesador Intel 8086">
+    <figcaption>Encapsulado del Intel 8086 (1978).</figcaption>
+</figure>
+<figure class="fig">
+    <img src="imagenes/u2_intel_8086_dado.png" alt="Interior del Intel 8086 con el dado de silicio visible">
+    <figcaption>Interior del Intel 8086: se aprecia el dado de silicio.</figcaption>
+</figure>
+
+<h4 id="s-2-4-1">2.4.1 Procesadores Intel</h4>
+<p>Comparativa de procesadores Intel de gama baja, media y alta, con sus especificaciones, ventajas y desventajas.</p>
+<figure class="fig fig-chica"><img src="imagenes/proc_intel_logo.png" alt="Logotipo de Intel"><figcaption>Intel.</figcaption></figure>
+
+<h5 id="p-i3-13100f">Intel Core i3-13100F (13th Gen) — Gama baja</h5>
+<p>Es un procesador de gama baja lanzado a principios de 2023 bajo la arquitectura <strong>Raptor Lake</strong>, diseñado para ofrecer un rendimiento básico pero eficiente en juegos y tareas cotidianas.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos e hilos:</strong> 4 núcleos y 8 hilos.</li>
+    <li><strong>Velocidad:</strong> 3.4 GHz base y hasta 4.5 GHz en modo turbo.</li>
+    <li><strong>Memoria caché:</strong> 12 MB de Intel Smart Cache y 5 MB de caché L2.</li>
+    <li><strong>Memoria RAM compatible:</strong> Soporte para memorias DDR4 y DDR5.</li>
+    <li><strong>Gráficos:</strong> No incluye gráfica integrada, por lo que requiere una tarjeta de video dedicada.</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li><strong>Eficiencia energética:</strong> mantiene un consumo base bajo (58 W), lo que ayuda a que el equipo no genere exceso de calor con un disipador de aire estándar.</li><li><strong>Precio más competitivo:</strong> al pertenecer a la generación anterior y no incluir gráficos integrados, su costo en el mercado suele ser más accesible.</li></ul></div>
+<div class="contra"><h6>Desventajas</h6><ul><li><strong>Pocos núcleos y subprocesos:</strong> actualmente, muchos programas modernos de productividad y juegos de última generación piden mínimo 6 núcleos para funcionar de forma fluida.</li><li><strong>Mal rendimiento en productividad pesada:</strong> no es adecuado para tareas exigentes como la edición de video en 4K, renderizado en 3D, streaming simultáneo mientras juegas o programación compleja.</li></ul></div>
+</div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_i3_13100f.png" alt="Caja, disipador y procesador Intel Core i3-13100F"><figcaption>Intel Core i3-13100F: caja, disipador y procesador.</figcaption></figure>
+</div>
+
+<h5 id="p-i3-14100">Intel Core i3-14100 (14th Gen) — Gama baja</h5>
+<p>Este procesador es una CPU de gama de entrada diseñada para tareas cotidianas, oficina, estudio y gaming básico.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos e hilos:</strong> 4 núcleos físicos (todos de rendimiento) y 8 hilos.</li>
+    <li><strong>Velocidad:</strong> hasta 4.70 GHz en modo turbo.</li>
+    <li><strong>Memoria caché:</strong> 12 MB de caché Intel.</li>
+    <li><strong>Gráficos integrados:</strong> incluye gráficos Intel UHD 730.</li>
+    <li><strong>Compatibilidad:</strong> memorias RAM DDR4 y DDR5, y placas base de las series 600 y 700.</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li><strong>Ligero aumento de rendimiento:</strong> ofrece una frecuencia base (3.4 GHz) y turbo (4.70 GHz) un poco más altas que el modelo de 13.ª generación, otorgando una respuesta ligeramente más ágil en aplicaciones cotidianas.</li><li><strong>Versatilidad de uso:</strong> funciona de manera excelente para PCs de oficina o de bajo presupuesto donde no se requiere potencia gráfica extrema, ahorrando costos iniciales en componentes.</li></ul></div>
+<div class="contra"><h6>Desventajas</h6><ul><li><strong>Menor valor por precio/rendimiento:</strong> al ser de una generación más reciente su costo suele ser un poco más elevado.</li><li><strong>Misma estructura base:</strong> al igual que el modelo anterior, está limitado a 4 núcleos, por lo que se queda corto rápidamente ante tareas profesionales pesadas (edición de video en alta resolución, modelado 3D avanzado, etc.).</li></ul></div>
+</div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_i3_14100.png" alt="Procesador Intel Core i3-14100F por ambos lados"><figcaption>Intel Core i3-14100: vista frontal y trasera.</figcaption></figure>
+</div>
+
+<h5 id="p-ultra5-225">Intel Core Ultra 5 225 (Arrow Lake) — Gama baja</h5>
+<p>El Intel Core Ultra 5 225 pertenece a la familia <strong>Arrow Lake</strong> (Core Ultra Serie 2) y utiliza el nuevo zócalo LGA 1851. Fabricado en Intel 20A/3 (nodo de última generación), reemplaza el diseño monolítico anterior por una arquitectura tipo chiplet/tile, e introduce una NPU dedicada para tareas de IA.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 10 núcleos híbridos / 10 hilos → 6 P-cores (Lion Cove) + 4 E-cores (Skymont). Sin Hyper-Threading (cada núcleo = 1 hilo).</li>
+    <li><strong>Velocidades de reloj:</strong> base 3.3 GHz → turbo máximo 4.9 GHz.</li>
+    <li><strong>Memoria caché:</strong> 20 MB L3 + 22 MB L2 (~42 MB total).</li>
+    <li><strong>Gráficos integrados:</strong> Intel Graphics (2 núcleos Xe), hasta 1.8 GHz; muy básica, solo para escritorio/oficina.</li>
+    <li><strong>Energía y refrigeración:</strong> TDP base 65 W / turbo (PPT) 121 W; requiere disipador decente, no es de bajo consumo real pese al nombre «eficiente».</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li><strong>NPU integrada (13 TOPS)</strong> para tareas de IA, algo que el i3-14100 no tiene.</li><li><strong>Arquitectura híbrida más moderna</strong> (P-cores + E-cores) = mejor gestión de tareas en segundo plano.</li><li>Soporta <strong>DDR5 más rápida y PCIe 5.0</strong>.</li><li>Buen rendimiento multinúcleo para su gama.</li></ul></div>
+<div class="contra"><h6>Desventajas</h6><ul><li>Gráficos integrados más débiles que el UHD 730 del i3-14100 (solo 2 núcleos Xe).</li><li>Requiere placa madre nueva (LGA 1851, chipset serie 800) → mayor costo de plataforma.</li><li>TDP más alto (65 W base) que el i3-14100 pese a ser «gama baja».</li><li>Precio más elevado (~$150-250 USD) que el i3-14100 para una mejora de rendimiento no siempre justificada en esa gama.</li></ul></div>
+</div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_ultra5_225_cajas.png" alt="Cajas del Intel Core Ultra 5 con disipador"><figcaption>Intel Core Ultra 5 225: cajas y disipador.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_ultra5_225_caja.png" alt="Caja del Intel Core Ultra 5 Unlocked Serie 2"><figcaption>Caja del Intel Core Ultra 5.</figcaption></figure>
+</div>
+
+<h5 id="p-i5-13400f">Intel Core i5-13400F (13th Gen) — Gama media</h5>
+<p>El Intel Core i5-13400F pertenece a la familia <strong>Raptor Lake</strong> y utiliza el zócalo LGA 1700. Fabricado en proceso Intel 7 (10 nm), adopta el diseño híbrido (P-cores + E-cores) que Intel introdujo desde la 12.ª gen, ofreciendo un salto notable de núcleos frente al i5-12400F. La «F» indica que no trae gráficos integrados.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 10 núcleos híbridos / 16 hilos → 6 P-cores (con Hyper-Threading) + 4 E-cores (sin HT).</li>
+    <li><strong>Velocidades de reloj:</strong> P-cores: base 2.5 GHz → turbo 4.6 GHz | E-cores: base 1.8 GHz → turbo 3.3 GHz.</li>
+    <li><strong>Memoria caché:</strong> 20 MB L3 + 9.5 MB L2.</li>
+    <li><strong>Gráficos integrados:</strong> ninguno (modelo «F»); requiere obligatoriamente tarjeta gráfica dedicada.</li>
+    <li><strong>Energía y refrigeración:</strong> TDP base 65 W / turbo máximo 148 W; incluye cooler de caja, compatible con diversas placas.</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li>Excelente relación precio-rendimiento en gama media (muy popular para gaming).</li><li>Salto grande de núcleos/hilos (10C/16T) vs. la generación anterior.</li><li>Compatible con DDR4 y DDR5, y PCIe 5.0 → plataforma flexible y económica.</li><li>Buen rendimiento en cargas multihilo (edición, multitarea).</li></ul></div>
+<div class="contra"><h6>Desventajas</h6><ul><li>Sin gráficos integrados → gasto obligatorio en GPU dedicada.</li><li>Multiplicador bloqueado, sin overclocking.</li><li>Consumo turbo (148 W) considerablemente más alto que el i3-14100.</li><li>Requiere mejor disipación que los modelos de gama baja.</li></ul></div>
+</div>
+
+<h5 id="p-ultra5-250kplus">Intel Core Ultra 5 250K Plus (Arrow Lake) — Gama media</h5>
+<p>El Intel Core Ultra 5 250K Plus es un procesador de escritorio de gama media de la familia <strong>Arrow Lake Refresh</strong>, diseñado para ofrecer alto rendimiento en juegos y multitarea utilizando el socket LGA 1851.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos totales:</strong> 18 (6 núcleos de rendimiento P-cores y 12 núcleos eficientes E-cores).</li>
+    <li><strong>Hilos (threads):</strong> 18.</li>
+    <li><strong>Frecuencia máxima en turbo:</strong> hasta 5.3 GHz.</li>
+    <li><strong>Caché:</strong> 30 MB Smart Cache + 30 MB L2.</li>
+    <li><strong>Socket compatible:</strong> LGA 1851 (placas base con chipset serie 800).</li>
+    <li><strong>Potencia base / TDP:</strong> 125 W (con un consumo máximo o turbo de hasta 159 W).</li>
+    <li><strong>Memoria RAM compatible:</strong> hasta DDR5-7200 MT/s (2 canales, máximo 256 GB).</li>
+    <li><strong>NPU (inteligencia artificial):</strong> integrada, con capacidad de hasta 30 TOPS.</li>
+    <li><strong>Gráficos integrados:</strong> sí.</li>
+    <li><strong>Disipador incluido:</strong> no; requiere compra por separado de un cooler adecuado.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_ultra5_250kplus_caja.png" alt="Caja del Intel Core Ultra 5 250K Plus"><figcaption>Caja del Intel Core Ultra 5 250K Plus.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_ultra5_250kplus_chip.png" alt="Procesador Intel Core Ultra 5 250K Plus"><figcaption>Procesador Core Ultra 5 250K Plus.</figcaption></figure>
+</div>
+
+<h5 id="p-i7-14700k">Intel Core i7-14700K (14th Gen) — Gama alta</h5>
+<p>El Intel Core i7-14700K pertenece a la familia <strong>Raptor Lake Refresh</strong> y utiliza el zócalo LGA 1700. Está construido bajo el proceso de fabricación Intel 7 (tecnología de transistores de 10 nanómetros optimizada). Su principal ventaja frente a generaciones anteriores fue el aumento directo en su conteo de núcleos físicos y memoria caché para balancear el trabajo pesado y las tareas secundarias de manera simultánea.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 20 núcleos físicos y 28 hilos, en un diseño híbrido: 8 núcleos de alto rendimiento (para tareas pesadas en primer plano como videojuegos) y 12 núcleos de eficiencia (para procesos secundarios y renderizado de fondo).</li>
+    <li><strong>Velocidades de reloj:</strong> frecuencia base de 3.4 GHz que alcanza un tope máximo de 5.6 GHz mediante Intel Turbo Boost Max 3.0. Al ser un modelo «K», tiene el multiplicador desbloqueado para permitir overclocking.</li>
+    <li><strong>Memoria caché:</strong> 33 MB de Intel Smart Cache (L3) compartida y 28 MB de caché L2, reduciendo drásticamente los tiempos de acceso a los datos de los programas.</li>
+    <li><strong>Compatibilidad de RAM:</strong> controlador de memoria dual que soporta DDR5 (hasta 5600 MT/s nativos) y DDR4 (hasta 3200 MT/s), con hasta 192 GB de capacidad.</li>
+    <li><strong>Conectividad PCIe:</strong> 20 líneas PCIe directas desde el procesador: 16 líneas PCIe 5.0 para la tarjeta gráfica y 4 líneas PCIe 4.0 para almacenamiento SSD NVMe.</li>
+    <li><strong>Gráficos integrados:</strong> Intel UHD Graphics 770 (hasta 1.60 GHz), capaz de dar salida de video independiente hasta en resolución 8K a 60 Hz o gestionar 4 pantallas simultáneas en 4K.</li>
+    <li><strong>Energía y refrigeración:</strong> consumo base de 125 W, que escala hasta los 253 W en potencia turbo máxima. Requiere obligatoriamente una refrigeración líquida de alto rendimiento (AIO de 280 mm o 360 mm) para evitar bajas de rendimiento por temperatura.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_i7_14700k_caja.png" alt="Caja del Intel Core i7-14700K"><figcaption>Caja del Intel Core i7-14700K.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_i7_14700k_chip.png" alt="Procesador Intel Core i7-14700K sostenido con la mano"><figcaption>Procesador Intel Core i7-14700K.</figcaption></figure>
+</div>
+
+<h5 id="p-i9-13900k">Intel Core i9-13900K (13th Gen) — Gama alta</h5>
+<p>El Intel Core i9-13900K pertenece a la familia original <strong>Raptor Lake</strong> y utiliza el zócalo LGA 1700. Está construido bajo el proceso de fabricación Intel 7 (tecnología de transistores de 10 nanómetros optimizada). Su principal ventaja frente a generaciones anteriores fue duplicar el conteo de núcleos de eficiencia y aumentar drásticamente las frecuencias de reloj y memoria caché para coronarse en su momento como el procesador de consumo más rápido del mundo en multitarea pesada y videojuegos.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 24 núcleos físicos y 32 hilos en un diseño híbrido masivo: 8 núcleos de alto rendimiento (arquitectura Raptor Cove, para videojuegos y programas pesados) y 16 núcleos de eficiencia (arquitectura Gracemont, enfocada en tareas en segundo plano, transmisiones en vivo y renderizado multihilo pesado).</li>
+    <li><strong>Velocidades de reloj:</strong> frecuencia base de 3.0 GHz que alcanza un tope máximo de 5.8 GHz gracias a la tecnología Intel Thermal Velocity Boost. Al llevar la letra «K», viene totalmente desbloqueado de fábrica para realizar overclocking.</li>
+    <li><strong>Memoria caché:</strong> 36 MB de Intel Smart Cache (L3) compartida de forma dinámica y 32 MB de caché L2, optimizando la latencia y la velocidad de respuesta del sistema bajo cargas extremas.</li>
+    <li><strong>Compatibilidad de RAM:</strong> controlador de memoria dual compatible con DDR5 (hasta 5600 MT/s nativos) y DDR4 (hasta 3200 MT/s), con una capacidad máxima de hasta 128 GB (escalable a 192 GB con actualizaciones de BIOS).</li>
+    <li><strong>Conectividad PCIe:</strong> 20 líneas PCIe desde el CPU: 16 líneas PCIe 5.0 para la tarjeta de video principal y 4 líneas PCIe 4.0 para un almacenamiento SSD NVMe de ultra alta velocidad.</li>
+    <li><strong>Gráficos integrados:</strong> Intel UHD Graphics 770 (hasta 1.65 GHz), que permite dar video sin tarjeta gráfica dedicada y soporta resoluciones de hasta 8K a 60 Hz.</li>
+    <li><strong>Energía y refrigeración:</strong> consumo base de 125 W, pero exige hasta 253 W en máxima potencia turbo (pudiendo superar los 300 W con overclocking activo). Requiere estrictamente una refrigeración líquida de gama alta (mínimo de 360 mm) para evitar el estrangulamiento térmico (thermal throttling).</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_i9_13900k_caja.png" alt="Caja del Intel Core i9-13900K"><figcaption>Caja del Intel Core i9-13900K.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_i9_13900k_chip.png" alt="Procesador Intel Core i9-13900K sostenido con la mano"><figcaption>Procesador Intel Core i9-13900K.</figcaption></figure>
+</div>
+
+<h5 id="p-ultra7-265k">Intel Core Ultra 7 265K (Arrow Lake) — Gama alta</h5>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> basado en la arquitectura Arrow Lake (proceso de 3 nm). Cuenta con 20 núcleos en total, divididos en 8 núcleos de rendimiento (P-cores) y 12 núcleos de eficiencia (E-cores). Dispone de 20 hilos de ejecución, ya que esta generación prescinde del Hyper-Threading.</li>
+    <li><strong>Velocidades de reloj (P-cores):</strong> frecuencia base de 3.9 GHz y turbo máxima de hasta 5.5 GHz.</li>
+    <li><strong>Velocidades de reloj (E-cores):</strong> frecuencia base de 3.3 GHz y turbo de hasta 4.6 GHz.</li>
+    <li><strong>Memoria caché:</strong> 30 MB de caché L3 (Smart Cache) y 36 MB de caché L2.</li>
+    <li><strong>Gráficos integrados:</strong> Intel (arquitectura Xe) con 4 núcleos de cálculo y una frecuencia dinámica máxima de hasta 2000 MHz.</li>
+    <li><strong>Energía y refrigeración:</strong> potencia base (TDP) de 125 W, con un consumo de potencia turbo máximo que alcanza los 250 W. Como es habitual en la serie K, no incluye disipador térmico, por lo que requerirás una solución de refrigeración líquida o por aire de gama alta.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_ultra7_265k.png" alt="Intel Core Ultra 7 265KF Arrow Lake"><figcaption>Intel Core Ultra 7 265K (Arrow Lake).</figcaption></figure>
+</div>
+
+<h5 id="p-ultra9-285k">Intel Core Ultra 9 285K (Arrow Lake) — Gama alta</h5>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> también se basa en la arquitectura Arrow Lake de 3 nm. Posee un total de 24 núcleos, formados por 8 núcleos de rendimiento (P-cores) y 16 núcleos de eficiencia (E-cores), con 24 hilos de procesamiento.</li>
+    <li><strong>Velocidades de reloj (P-cores):</strong> frecuencia base de 3.7 GHz. Alcanza una frecuencia turbo máxima de 5.7 GHz impulsada por la tecnología Thermal Velocity Boost.</li>
+    <li><strong>Velocidades de reloj (E-cores):</strong> frecuencia base de 3.2 GHz, con un turbo de hasta 4.6 GHz.</li>
+    <li><strong>Memoria caché:</strong> 36 MB de caché L3 compartida y 40 MB de caché L2.</li>
+    <li><strong>Gráficos integrados:</strong> gráficos integrados Intel (64 unidades de ejecución) que también alcanzan una frecuencia dinámica máxima de 2000 MHz.</li>
+    <li><strong>Energía y refrigeración:</strong> potencia base (TDP) de 125 W, mientras que su potencia máxima turbo sube hasta los 250 W. La temperatura máxima de operación es de 105 °C y, al igual que el modelo 7, no incluye refrigeración de fábrica.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_ultra9_285k.png" alt="Intel Core Ultra 9 285K"><figcaption>Intel Core Ultra 9 285K (Arrow Lake).</figcaption></figure>
+</div>
+
+<h4 id="s-2-4-2">2.4.2 Procesadores AMD</h4>
+<p>Comparativa de procesadores AMD Ryzen de gama baja, media y alta.</p>
+<figure class="fig fig-chica"><img src="imagenes/proc_amd_logo.png" alt="Logotipo de AMD"><figcaption>AMD.</figcaption></figure>
+
+<h5 id="p-r3-3200g">AMD Ryzen 3 3200G — Gama baja</h5>
+<p>El AMD Ryzen 3 3200G es un procesador de escritorio de nivel de entrada que incluye gráficos integrados potentes, diseñado para armar computadoras económicas sin necesidad de una tarjeta gráfica dedicada.</p>
+<p><strong>Ideal para</strong> tareas de navegación web, ofimática (Word, Excel) y reproducción multimedia en alta definición. <strong>Gaming básico:</strong> permite jugar títulos ligeros o esports populares en resoluciones moderadas sin comprar una tarjeta de video. <strong>Presupuesto ajustado:</strong> es una solución muy popular de excelente relación calidad-precio para armar equipos de entrada.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos totales / hilos:</strong> 4 / 4.</li>
+    <li><strong>Núcleos principales:</strong> 4 a 3.6 GHz; frecuencia turbo hasta 4 GHz.</li>
+    <li><strong>Caché:</strong> N1 datos 384 KB; N2 2 MB; N3 4 MB.</li>
+    <li><strong>Memoria compatible:</strong> DDR4-2933 (interfaz DDR4), máximo 64 GB, 2933 MT/s, reloj de memoria 1466 MHz.</li>
+    <li><strong>Canales de memoria:</strong> 2 de 64 bits; ancho de banda máx. 46.93 GB/s.</li>
+    <li><strong>Chip gráfico integrado:</strong> iGPU AMD Radeon Vega 8: 512 sombreadores, 1250 MHz, cómputo FP32 de 1.28 TFLOPS.</li>
+    <li><strong>Parámetros:</strong> T. unión 95 °C; TDP 65 W (bajada configurable a 45 W).</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r3_3200g_caja.png" alt="Caja del AMD Ryzen 3 3200G"><figcaption>Caja del AMD Ryzen 3 3200G.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_r3_3200g_chip.png" alt="Procesador AMD Ryzen 3 3200G"><figcaption>Procesador AMD Ryzen 3 3200G.</figcaption></figure>
+</div>
+
+<h5 id="p-r5-5500">AMD Ryzen 5 5500 — Gama baja</h5>
+<p>El AMD Ryzen 5 5500 pertenece a la familia Ryzen 5000 y utiliza el zócalo <strong>AM4</strong>. Está construido bajo el proceso de fabricación de 7 nanómetros de TSMC y utiliza la arquitectura <strong>Zen 3</strong>, ofreciendo un buen equilibrio entre rendimiento y eficiencia para gaming, productividad y tareas cotidianas.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 6 núcleos físicos y 12 hilos, basados en la arquitectura Zen 3. Buen rendimiento para ejecutar videojuegos, aplicaciones y tareas simultáneas; especialmente adecuado para equipos gaming económicos.</li>
+    <li><strong>Velocidades de reloj:</strong> frecuencia base de 3.6 GHz y máxima de 4.2 GHz mediante AMD Precision Boost.</li>
+    <li><strong>Memoria caché:</strong> 16 MB de caché L3 y 3 MB de caché L2, para un total de 19 MB. La caché ayuda a reducir el tiempo necesario para acceder a datos utilizados frecuentemente por los núcleos.</li>
+    <li><strong>Compatibilidad de RAM:</strong> controlador de memoria DDR4 de doble canal, con soporte oficial de hasta DDR4-3200 MT/s. Al utilizar el socket AM4, requiere memoria DDR4.</li>
+    <li><strong>Conectividad PCIe:</strong> 24 líneas PCIe utilizables desde el procesador, pero a diferencia de otros modelos Ryzen 5000, utiliza PCIe 3.0, con un ancho de banda inferior al de plataformas con PCIe 4.0 o 5.0.</li>
+    <li><strong>Gráficos integrados:</strong> no incluye; es necesario utilizar una tarjeta gráfica dedicada para obtener imagen en el monitor.</li>
+    <li><strong>Energía y refrigeración:</strong> TDP de 65 W y temperatura máxima de operación de 90 °C. Sí incluye un disipador AMD Wraith Stealth de fábrica, suficiente para un funcionamiento normal.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r5_5500_caja.png" alt="Caja del AMD Ryzen 5 5500"><figcaption>Caja del AMD Ryzen 5 5500.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_r5_5500_chip.png" alt="Procesador AMD Ryzen 5 5500"><figcaption>Procesador AMD Ryzen 5 5500.</figcaption></figure>
+</div>
+
+<h5 id="p-r5-5600g">AMD Ryzen 5 5600G — Gama baja</h5>
+<p>Procesador de gama media-baja (ideal para presupuestos ajustados) que destaca por incluir gráficos integrados <strong>Radeon Vega 7</strong>, eliminando la necesidad de una tarjeta gráfica dedicada para tareas básicas y juegos ligeros.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos e hilos:</strong> 6 núcleos y 12 subprocesos.</li>
+    <li><strong>Velocidad:</strong> 3.9 GHz base y hasta 4.4 GHz en modo turbo.</li>
+    <li><strong>Consumo:</strong> 65 W.</li>
+    <li><strong>Socket:</strong> AM4 (compatible con placas madre de la serie 400 y 500).</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li>Su potencia multitarea garantiza un desempeño rápido y estable en programas de oficina, estudio, navegación pesada y edición ligera de video o imagen.</li><li>Su consumo hace que genere poco calor y el disipador es suficiente para mantener temperaturas estables.</li></ul></div>
+</div>
+
+<h5 id="p-r5-5600x">AMD Ryzen 5 5600X — Gama media</h5>
+<p>Procesador de gama media con arquitectura <strong>Zen 3</strong> que ofrece un excelente balance entre costo y rendimiento para videojuegos y multitarea.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos e hilos:</strong> 6 núcleos y 12 hilos de procesamiento.</li>
+    <li><strong>Velocidad:</strong> 3.7 GHz de frecuencia base y hasta 4.6 GHz en modo turbo.</li>
+    <li><strong>Consumo:</strong> 65 W de Potencia de Diseño Térmico, lo que garantiza una buena eficiencia.</li>
+    <li><strong>Memoria caché:</strong> 32 MB de caché L3.</li>
+    <li><strong>Socket:</strong> compatible con placas madre AM4.</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li>Por su núcleo e hilos proporciona la potencia ideal para manejar juegos modernos y multitarea sin problemas.</li><li>Duplica el ancho de banda para tarjetas gráficas y almacenamiento rápido en comparación con generaciones anteriores.</li></ul></div>
+</div>
+
+<h5 id="p-r5-7600">AMD Ryzen 5 7600 — Gama media</h5>
+<p>Procesador de gama media con arquitectura <strong>Zen 4</strong> que ofrece un excelente balance entre costo y rendimiento para la nueva generación de videojuegos y multitarea.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos e hilos:</strong> 6 núcleos y 12 hilos de procesamiento.</li>
+    <li><strong>Velocidad:</strong> 3.8 GHz de frecuencia base y hasta 5.1 GHz en modo turbo.</li>
+    <li><strong>Consumo:</strong> 65 W de Potencia de Diseño Térmico, lo que garantiza una muy buena eficiencia energética.</li>
+    <li><strong>Memoria caché:</strong> 32 MB de caché L3.</li>
+    <li><strong>Socket:</strong> compatible con placas madre AM5.</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li>Por su núcleo e hilos proporciona la potencia ideal para manejar juegos modernos y multitarea sin problemas.</li><li>Da el salto a la plataforma más reciente de AMD, con soporte para tecnologías modernas como la memoria RAM DDR5 y el estándar PCIe 5.0, además de incluir su propio disipador de calor de fábrica (Wraith Stealth).</li></ul></div>
+</div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r5_7600_chip.png" alt="Procesador AMD Ryzen 5 7600"><figcaption>Procesador AMD Ryzen 5 7600.</figcaption></figure>
+</div>
+
+<h5 id="p-r5-9600x">AMD Ryzen 5 9600X — Gama media</h5>
+<p>Procesador de gama media con arquitectura <strong>Zen 5</strong> que ofrece un excelente balance entre costo y rendimiento avanzado para videojuegos y multitarea.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Núcleos e hilos:</strong> 6 núcleos y 12 hilos de procesamiento.</li>
+    <li><strong>Velocidad:</strong> 3.9 GHz de frecuencia base y hasta 5.4 GHz en modo turbo.</li>
+    <li><strong>Consumo:</strong> 65 W de Potencia de Diseño Térmico, lo que garantiza una excelente eficiencia energética.</li>
+    <li><strong>Memoria caché:</strong> 32 MB de caché L3.</li>
+    <li><strong>Socket:</strong> compatible con placas madre AM5.</li>
+</ul></div></div>
+<div class="pros-cons">
+<div class="pro"><h6>Ventajas</h6><ul><li>Por su arquitectura de nueva generación (Zen 5), proporciona la potencia ideal para manejar juegos modernos y multitarea exigente sin problemas.</li><li>Ofrece soporte para tecnologías de vanguardia, como memoria RAM DDR5 y el estándar PCIe 5.0, permitiendo anchos de banda ultrarrápidos para tarjetas gráficas y almacenamiento de última generación.</li></ul></div>
+</div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r5_9600x_chip.png" alt="Procesador AMD Ryzen 5 9600X, serie 9000"><figcaption>Procesador AMD Ryzen 5 9600X.</figcaption></figure>
+</div>
+
+<h5 id="p-r7-7800x3d">AMD Ryzen 7 7800X3D — Gama alta</h5>
+<p>El AMD Ryzen 7 7800X3D pertenece a la familia Ryzen 7000 y utiliza el zócalo <strong>AM5</strong>. Está construido bajo el proceso de fabricación de 5 nanómetros de TSMC y utiliza la arquitectura <strong>Zen 4</strong>, incorporando la tecnología <strong>AMD 3D V-Cache</strong>, diseñada para aumentar considerablemente la memoria caché disponible y ofrecer un elevado rendimiento en videojuegos.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 8 núcleos físicos y 16 hilos, basados en Zen 4. Todos sus núcleos son de alto rendimiento. Su principal característica es la tecnología 3D V-Cache, que añade una gran cantidad de caché L3 directamente al procesador.</li>
+    <li><strong>Velocidades de reloj:</strong> frecuencia base de 4.2 GHz y máxima de 5.0 GHz mediante AMD Precision Boost. Está diseñado principalmente para gaming.</li>
+    <li><strong>Memoria caché:</strong> 96 MB de caché L3 y 8 MB de caché L2, para un total de 104 MB. La gran caché L3 reduce la dependencia de la memoria RAM y mejora el rendimiento en numerosos videojuegos.</li>
+    <li><strong>Compatibilidad de RAM:</strong> controlador DDR5 de doble canal, con soporte oficial de hasta DDR5-5200 MT/s; compatible con perfiles AMD EXPO.</li>
+    <li><strong>Conectividad PCIe:</strong> 24 líneas PCIe utilizables desde el procesador, con soporte para PCIe 5.0.</li>
+    <li><strong>Gráficos integrados:</strong> AMD Radeon Graphics basados en RDNA 2, con 2 unidades de cómputo (CU) y una frecuencia máxima de 2.2 GHz. Suficientes para tareas básicas y salida de vídeo.</li>
+    <li><strong>Energía y refrigeración:</strong> TDP de 120 W y temperatura máxima de operación de 89 °C. No incluye disipador de fábrica; se recomienda un disipador de aire de gama alta o refrigeración líquida AIO de 240/280 mm.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r7_7800x3d_caja.png" alt="Caja del AMD Ryzen 7 7800X3D"><figcaption>Caja del AMD Ryzen 7 7800X3D.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_r7_7800x3d_chip.png" alt="Procesador AMD Ryzen 7 7800X3D"><figcaption>Procesador AMD Ryzen 7 7800X3D.</figcaption></figure>
+</div>
+
+<h5 id="p-r7-9800x3d">AMD Ryzen 7 9800X3D — Gama alta</h5>
+<p>El AMD Ryzen 7 9800X3D pertenece a la familia Ryzen 9000 y utiliza el zócalo <strong>AM5</strong>. Está construido bajo el proceso de fabricación de 4 nanómetros (TSMC) y utiliza la arquitectura <strong>Zen 5</strong> junto con la tecnología <strong>3D V-Cache</strong>, diseñada especialmente para ofrecer un rendimiento excepcional en videojuegos al incorporar una gran cantidad de memoria caché directamente sobre el procesador.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 8 núcleos físicos y 16 hilos, con arquitectura Zen 5. Todos sus núcleos son de alto rendimiento. Su principal característica es la incorporación de 96 MB de caché L3 total, gracias a la tecnología 3D V-Cache.</li>
+    <li><strong>Velocidades de reloj:</strong> frecuencia base de 4.7 GHz y máxima de 5.2 GHz mediante AMD Precision Boost. Orientado principalmente a un elevado rendimiento en gaming.</li>
+    <li><strong>Memoria caché:</strong> 96 MB de caché L3 y 8 MB de caché L2, para un total de 104 MB.</li>
+    <li><strong>Compatibilidad de RAM:</strong> controlador DDR5 de doble canal, compatible oficialmente con hasta DDR5-5600 MT/s; puede aprovechar perfiles de memoria como AMD EXPO.</li>
+    <li><strong>Conectividad PCIe:</strong> 24 líneas PCIe utilizables desde el procesador, con soporte para PCIe 5.0.</li>
+    <li><strong>Gráficos integrados:</strong> AMD Radeon Graphics con 2 unidades de cómputo (CU) basadas en RDNA 2, destinados a salida de vídeo y funciones básicas.</li>
+    <li><strong>Energía y refrigeración:</strong> TDP de 120 W y temperaturas de funcionamiento de hasta 95 °C. No incluye refrigerador de fábrica; se recomienda disipador de aire de gama alta o AIO de 240/280 mm o superior.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r7_9800x3d_caja.png" alt="Caja del AMD Ryzen 7 9800X3D"><figcaption>Caja del AMD Ryzen 7 9800X3D.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_r7_9800x3d_chip.png" alt="Procesador AMD Ryzen 7 9800X3D"><figcaption>Procesador AMD Ryzen 7 9800X3D.</figcaption></figure>
+</div>
+
+<h5 id="p-r9-9900x">AMD Ryzen 9 9900X — Gama alta</h5>
+<p>El AMD Ryzen 9 9900X pertenece a la familia Ryzen 9000 y utiliza el zócalo <strong>AM5</strong>. Está construido bajo el proceso de 4 nanómetros de TSMC y utiliza la arquitectura <strong>Zen 5</strong>, diseñada para ofrecer un alto rendimiento tanto en videojuegos como en tareas profesionales exigentes, como edición de vídeo, renderizado, compilación y multitarea.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 12 núcleos físicos y 24 hilos, distribuidos en dos chiplets de cómputo (CCD) basados en Zen 5.</li>
+    <li><strong>Velocidades de reloj:</strong> frecuencia base de 4.4 GHz y máxima de 5.6 GHz mediante AMD Precision Boost. Multiplicador desbloqueado para overclocking.</li>
+    <li><strong>Memoria caché:</strong> 64 MB de caché L3 y 12 MB de caché L2, para un total de 76 MB.</li>
+    <li><strong>Compatibilidad de RAM:</strong> controlador DDR5 de doble canal, con soporte oficial de hasta DDR5-5600 MT/s; permite perfiles como AMD EXPO.</li>
+    <li><strong>Conectividad PCIe:</strong> 24 líneas PCIe utilizables desde el procesador, con soporte para PCIe 5.0.</li>
+    <li><strong>Gráficos integrados:</strong> AMD Radeon Graphics basados en RDNA 2, con 2 unidades de cómputo (CU), adecuados para tareas básicas, reproducción multimedia y salida de vídeo.</li>
+    <li><strong>Energía y refrigeración:</strong> TDP de 120 W y temperatura máxima de operación de 95 °C. No incluye disipador de fábrica; se recomienda disipador de aire de gama alta o AIO de 240/280 mm o superior.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r9_9900x_caja.png" alt="Caja del AMD Ryzen 9 9900X"><figcaption>Caja del AMD Ryzen 9 9900X.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_r9_9900x_chip.png" alt="Procesador AMD Ryzen 9 9900X instalado en un socket AM5"><figcaption>Procesador AMD Ryzen 9 9900X instalado en el socket AM5.</figcaption></figure>
+</div>
+
+<h5 id="p-r9-9950x">AMD Ryzen 9 9950X — Gama alta</h5>
+<p>El AMD Ryzen 9 9950X pertenece a la familia Ryzen 9000 y utiliza el zócalo <strong>AM5</strong>. Está construido bajo el proceso de 4 nanómetros de TSMC y utiliza la arquitectura <strong>Zen 5</strong>, ofreciendo un rendimiento de gama alta orientado tanto a videojuegos como a tareas profesionales intensivas, como renderizado 3D, edición de vídeo, creación de contenido, simulaciones y multitarea avanzada.</p>
+<div class="info-grid"><div class="info-card"><h5>Especificaciones</h5><ul>
+    <li><strong>Arquitectura y núcleos:</strong> 16 núcleos físicos y 32 hilos, distribuidos en dos chiplets de cómputo (CCD) basados en Zen 5. Especialmente útil para cargas de trabajo altamente paralelizables.</li>
+    <li><strong>Velocidades de reloj:</strong> frecuencia base de 4.3 GHz y máxima de 5.7 GHz mediante AMD Precision Boost. Multiplicador desbloqueado.</li>
+    <li><strong>Memoria caché:</strong> 64 MB de caché L3 y 16 MB de caché L2, para un total de 80 MB.</li>
+    <li><strong>Compatibilidad de RAM:</strong> controlador DDR5 de doble canal, con soporte oficial de hasta DDR5-5600 MT/s; compatible con perfiles AMD EXPO.</li>
+    <li><strong>Conectividad PCIe:</strong> 24 líneas PCIe utilizables desde el procesador, con soporte para PCIe 5.0.</li>
+    <li><strong>Gráficos integrados:</strong> AMD Radeon Graphics basados en RDNA 2, con 2 unidades de cómputo (CU), orientados a tareas básicas y salida de vídeo.</li>
+    <li><strong>Energía y refrigeración:</strong> TDP de 170 W y temperatura máxima de operación de 95 °C. No incluye disipador de fábrica; se recomienda una refrigeración líquida AIO de 280 mm o 360 mm.</li>
+</ul></div></div>
+<div class="fig-par">
+<figure class="fig"><img src="imagenes/proc_r9_9950x_caja.png" alt="Caja del AMD Ryzen 9 9950X"><figcaption>Caja del AMD Ryzen 9 9950X.</figcaption></figure>
+<figure class="fig"><img src="imagenes/proc_r9_9950x_chip.png" alt="Procesador AMD Ryzen 9 9950X"><figcaption>Procesador AMD Ryzen 9 9950X.</figcaption></figure>
+</div>
+`
+            },
+            tema3: {
+                titulo: "03 - Arquitectura de Computadoras",
+                descripcion: "Unidad 3 · Chip set, aplicaciones y ambientes de servicio",
+                contenido: `
+<h2 id="s-3-0">Arquitectura de computadoras</h2>
+<p>En esta unidad se estudian los componentes que conforman una computadora completa: el chip set y los controladores que organizan la comunicación entre la CPU, la memoria y los periféricos, así como sus aplicaciones y los ambientes de servicio donde se utilizan.</p>
+
+<!-- ===================== 3.1 ===================== -->
+<h3 id="s-3-1">3.1 Chip set</h3>
+<p>El chipset es el centro de comunicaciones de la placa base de un ordenador, ese que controla y organiza los datos entre el procesador y el resto de componentes, como los discos duros, los discos SSD, la memoria RAM, las tarjetas gráficas, los puertos USB, el monitor, el teclado o el ratón. Puedes imaginarlo como un controlador de tráfico: organiza, prioriza y encamina los datos para que nada choque y todo llegue a tiempo.</p>
+<p>Más allá de mover datos, el chipset determina compatibilidades: si una CPU o una memoria no pueden hablar «el mismo idioma» con el chipset, no habrá comunicación posible, por lo que esas piezas no funcionarán o lo harán con limitaciones.</p>
+<p>Tampoco hay que confundir el chipset con la CPU. La CPU ejecuta instrucciones y realiza cálculos; el chipset, en cambio, coordina las comunicaciones y las E/S entre los distintos dispositivos, incluida la propia CPU. Si la CPU es el cerebro, el chipset sería el sistema nervioso que distribuye señales por todo el sistema.</p>
+<p class="nota">Analogía: CPU = cerebro · Chipset = sistema nervioso / controlador de tráfico.</p>
+<figure class="fig fig-chica"><img src="imagenes/u3_chipset_placa.png" alt="Placa base con un procesador instalado en su zócalo LGA775"><figcaption>Placa base: el chipset organiza la comunicación entre el procesador y el resto de componentes.</figcaption></figure>
+
+<!-- ===================== 3.1.1 ===================== -->
+<h4 id="s-3-1-1">3.1.1 Unidad Central de Procesamiento (CPU)</h4>
+<p>La CPU no se conecta directamente a la mayoría de los componentes, sino que utiliza el chipset como puente de comunicación.</p>
+<div class="info-grid">
+    <div class="info-card">
+        <h5>Función</h5>
+        <p>Procesa las instrucciones y se apoya en el chipset para enviar y recibir datos hacia/desde la memoria y los periféricos.</p>
+    </div>
+    <div class="info-card">
+        <h5>Evolución</h5>
+        <ul>
+            <li><strong>Tradicional:</strong> la CPU se comunicaba con la RAM y video, este a su vez con los periféricos y el disco.</li>
+            <li><strong>Moderna:</strong> la CPU ya integra el controlador de memoria y líneas PCIe principales; se conecta al chipset (PCH/FCH) mediante un enlace punto a punto de alta velocidad para manejar la Entrada/Salida.</li>
+        </ul>
+    </div>
+    <div class="info-card">
+        <h5>Coordinación</h5>
+        <p>Recibe las señales de reloj del chipset y envía las direcciones de memoria y control para que este las rutee al destino correcto.</p>
+    </div>
+</div>
+<figure class="fig fig-chica"><img src="imagenes/u3_cpu_amd_chip.png" alt="Procesador AMD sobre una placa base"><figcaption>Procesador AMD montado en la placa.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3_chipset_z77.png" alt="Procesador Intel y chipset Intel Z77"><figcaption>Procesador Intel junto a un chipset Intel Z77.</figcaption></figure>
+
+<h5>1. Componentes internos de la CPU</h5>
+<p>Para entender cómo procesa las instrucciones, es clave mencionar sus tres unidades principales:</p>
+<ul>
+    <li><strong>Unidad de Control (CU):</strong> coordina y dirige las operaciones de todo el sistema; busca las instrucciones en la memoria, las decodifica y envía señales de control a los demás componentes.</li>
+    <li><strong>Unidad Aritmético-Lógica (ALU):</strong> realiza las operaciones matemáticas (sumas, restas) y lógicas (comparaciones AND, OR, NOT).</li>
+    <li><strong>Registros de memoria:</strong> pequeños espacios de almacenamiento ultrarrápidos dentro del propio chip para guardar datos e instrucciones temporales en uso inmediato.</li>
+</ul>
+
+<h5>2. Niveles de memoria caché (L1, L2, L3)</h5>
+<p>La CPU requiere acceso ultrarrápido a los datos para no quedar en espera de la memoria RAM:</p>
+<div class="info-grid">
+    <div class="info-card"><h5>Caché L1</h5><p>La más rápida y de menor tamaño, ubicada dentro de cada núcleo.</p></div>
+    <div class="info-card"><h5>Caché L2</h5><p>Ligeramente más lenta que la L1 pero de mayor capacidad; actúa como respaldo secundario de cada núcleo.</p></div>
+    <div class="info-card"><h5>Caché L3</h5><p>Memoria compartida entre todos los núcleos del procesador, encargada de acelerar la comunicación entre ellos y reducir las peticiones directas a la RAM.</p></div>
+</div>
+
+
+<h5>3. Evolución de la arquitectura: chipset tradicional vs. moderno</h5>
+<div class="info-grid">
+    <div class="info-card">
+        <h5>Esquema tradicional (Northbridge / Southbridge)</h5>
+        <ul>
+            <li><strong>Northbridge (puente norte):</strong> conectaba directamente la CPU con la memoria RAM y la tarjeta de video (PCIe/AGP) por su alta velocidad.</li>
+            <li><strong>Southbridge (puente sur):</strong> gestionaba los periféricos lentos (discos duros, USB, audio, red, BIOS) y se comunicaba con la CPU a través del Northbridge.</li>
+        </ul>
+    </div>
+    <div class="info-card">
+        <h5>Esquema moderno (System Agent / SoC)</h5>
+        <ul>
+            <li>El puente norte desaparece al integrarse directamente en el die o empaque de la CPU (controlador de memoria DDR y líneas PCIe de alta velocidad).</li>
+            <li>El puente sur evoluciona al PCH o FCH, conectado a la CPU por enlaces punto a punto de alta velocidad (como DMI o UMI).</li>
+        </ul>
+    </div>
+</div>
+<figure class="fig fig-chica"><img src="imagenes/u3_northbridge_southbridge.png" alt="Esquema del Northbridge y Southbridge conectados a CPU, RAM, video y periféricos"><figcaption>Esquema tradicional: el Northbridge conecta CPU, RAM y video; el Southbridge gestiona los periféricos lentos.</figcaption></figure>
+
+<h5>4. Conceptos clave de rendimiento</h5>
+<ul>
+    <li><strong>Núcleos e hilos (cores &amp; threads):</strong>
+        <ul>
+            <li><strong>Núcleo físico:</strong> unidad de procesamiento independiente dentro de la CPU.</li>
+            <li><strong>Multihilo (Hyper-Threading / SMT):</strong> tecnología que permite a un solo núcleo físico ejecutar dos hilos de procesamiento simultáneamente.</li>
+        </ul>
+    </li>
+    <li><strong>Frecuencia de reloj (GHz):</strong> determina la cantidad de ciclos de reloj que la CPU puede realizar por segundo.</li>
+    <li><strong>IPC (Instrucciones Por Ciclo):</strong> mide la eficiencia de la arquitectura de la CPU independientemente de los GHz.</li>
+</ul>
+
+<!-- ===================== 3.1.2 ===================== -->
+<h4 id="s-3-1-2">3.1.2 Controlador de bus</h4>
+<h5>¿Qué es y qué hace?</h5>
+<p>Un <strong>bus</strong> es el camino por donde viajan los datos entre los componentes. El <strong>controlador de bus</strong> es el que organiza todo ese tráfico.</p>
+<h5>Funciones principales</h5>
+<ul>
+    <li><strong>Arbitraje:</strong> decide qué dispositivo usa el bus cuando varios lo piden al mismo tiempo.</li>
+    <li><strong>Control de acceso:</strong> da permiso o lo niega, para que no haya choques de datos.</li>
+    <li><strong>Sincronización:</strong> hace que dispositivos de distinta velocidad se entiendan.</li>
+    <li><strong>Traducción entre buses:</strong> conecta buses de diferente ancho o velocidad (por ejemplo, el bus de la memoria RAM con el de un puerto USB).</li>
+    <li><strong>Manejo de señales de control:</strong> manda las órdenes de lectura, escritura y reloj.</li>
+</ul>
+
+<h5>Conceptos clave</h5>
+<div class="info-grid">
+    <div class="info-card"><h5>Maestro (bus master)</h5><p>El que manda y empieza la comunicación, por ejemplo la CPU.</p></div>
+    <div class="info-card"><h5>Esclavo</h5><p>El que responde a lo que le piden, por ejemplo la memoria.</p></div>
+    <div class="info-card">
+        <h5>Métodos de arbitraje</h5>
+        <ul>
+            <li>En cadena (daisy chain).</li>
+            <li>Por consulta (polling).</li>
+            <li>Por petición independiente.</li>
+        </ul>
+    </div>
+</div>
+<figure class="fig"><img src="imagenes/u3_bus_elementos.png" alt="Elementos básicos de un sistema de cómputo: CPU, memoria, unidad de control y dispositivos de E/S unidos por un bus"><figcaption>Elementos básicos de un sistema de cómputo conectados por un bus.</figcaption></figure>
+
+<h5>Tipos de bus, características y ejemplos</h5>
+<p><strong>Los 3 buses del sistema:</strong></p>
+<ol>
+    <li><strong>Bus de datos:</strong> transporta la información. Va en dos sentidos (lee y escribe).</li>
+    <li><strong>Bus de direcciones:</strong> dice en qué lugar de la memoria o de qué dispositivo se va a leer o escribir. Va en un solo sentido, del CPU hacia afuera.</li>
+    <li><strong>Bus de control:</strong> manda las señales de coordinación (leer, escribir, reloj, interrupciones).</li>
+</ol>
+<p>El ancho del bus importa. Con un bus de direcciones de 32 bits se pueden direccionar 4 GB de memoria. Con 64 bits el límite es enorme.</p>
+<p><span class="flujo">Ancho de banda = ancho del bus × frecuencia</span></p>
+<p>Es la cantidad de datos que se mueven por segundo.</p>
+<p><strong>Tipos según su forma de transmitir:</strong></p>
+<ul>
+    <li><strong>Paralelo:</strong> manda varios bits a la vez (el PCI antiguo).</li>
+    <li><strong>Serie:</strong> manda bit por bit, pero a mucha velocidad (PCI Express, USB, SATA).</li>
+</ul>
+<figure class="fig"><img src="imagenes/u3_bus_datos_direccion_control.png" alt="Diagrama de bus de datos, bus de dirección y bus de control conectando CPU, memoria y unidad de E/S"><figcaption>Los tres buses del sistema: datos, dirección y control.</figcaption></figure>
+
+<!-- ===================== 3.1.3 ===================== -->
+<h4 id="s-3-1-3">3.1.3 Puertos y puertas de entrada/salida (E/S)</h4>
+<p>Son las interfaces físicas y lógicas que permiten la transferencia de datos entre el procesador (CPU) / memoria y los dispositivos periféricos (teclado, disco duro, red).</p>
+<p><strong>Función principal:</strong> actuar como puente y traducir la información entre el bus del sistema y los controladores de los periféricos.</p>
+<h5>Tipos principales</h5>
+<div class="info-grid">
+    <div class="info-card"><h5>Serie</h5><p>Transmiten datos bit a bit (ej. USB, Ethernet).</p></div>
+    <div class="info-card"><h5>Paralelo</h5><p>Transmiten múltiples bits simultáneamente (ej. bus de datos interno).</p></div>
+    <div class="info-card"><h5>Mapeados en memoria (MMIO)</h5><p>Comparten el mismo espacio de direcciones que la RAM.</p></div>
+    <div class="info-card"><h5>Mapeados en E/S (Isolated I/O)</h5><p>Utilizan un espacio de direcciones y líneas de control independientes.</p></div>
+</div>
+
+<!-- ===================== 3.1.4 ===================== -->
+<h4 id="s-3-1-4">3.1.4 Controlador de interrupciones</h4>
+<p>El controlador de interrupciones es un componente adicional que se utiliza para gestionar las peticiones de interrupciones. Cada módulo de entrada y salida tiene líneas de petición de interrupción y reconocimiento conectadas al controlador de interrupciones; de esta manera, el procesador solo debe tener una línea de petición de interrupción y una de reconocimiento conectadas al controlador de interrupciones para gestionar las peticiones de entrada y salida.</p>
+<h5>Funciones del controlador de interrupciones</h5>
+<ul>
+    <li>Establecer una política de prioridades para los módulos de entrada y salida del controlador.</li>
+    <li>Destacar qué módulo de entrada y salida necesita atención e informar al procesador.</li>
+    <li>La gestión de interrupciones de este sistema es similar a la gestión de interrupciones con un solo módulo de entrada y salida, por lo que debe ajustar la etapa de reconocimiento de interrupciones para administrar las prioridades y determinar qué atención periférica necesita.</li>
+</ul>
+<figure class="fig"><img src="imagenes/u3_controlador_interrupciones.png" alt="Controlador de interrupciones conectado a varios módulos de E/S mediante líneas INT e INTA"><figcaption>Controlador de interrupciones: cada módulo de E/S tiene líneas de petición y reconocimiento conectadas al controlador.</figcaption></figure>
+
+<!-- ===================== 3.1.5 ===================== -->
+<h4 id="s-3-1-5">3.1.5 Controlador de acceso directo a memoria (DMA)</h4>
+<p>Es un circuito integrado en la estructura del chipset que transfiere datos entre los periféricos y la memoria RAM sin pasar por la CPU. Permite que discos duros, redes o tarjetas de sonido muevan grandes bloques de datos directamente a la RAM.</p>
+<h5>Proceso básico</h5>
+<ol>
+    <li>El periférico pide acceso al DMA.</li>
+    <li>El DMA le solicita a la CPU liberar el bus de datos.</li>
+    <li>La CPU cede el bus y el DMA realiza la transferencia directamente a la RAM.</li>
+    <li>Al finalizar, el DMA envía una interrupción (IRQ) a la CPU para avisar que los datos están listos.</li>
+</ol>
+<div class="pros-cons">
+    <div class="pro"><h6>Beneficio</h6><p>Evita que la CPU pierda tiempo copiando byte por byte, liberándola para ejecutar otros procesos.</p></div>
+</div>
+<figure class="fig fig-chica"><img src="imagenes/u3_dma_tarjeta.png" alt="Tarjeta con controlador DMA en formato PCIe"><figcaption>Ejemplo de tarjeta con circuito DMA.</figcaption></figure>
+
+<!-- ===================== 3.1.6 ===================== -->
+<h4 id="s-3-1-6">3.1.6 Circuitos de temporización</h4>
+<p>Son los circuitos que generan el «reloj» de la computadora, la señal que marca el ritmo para que todo trabaje coordinado.</p>
+<ul>
+    <li>La señal de reloj es una onda cuadrada que sube y baja constantemente.</li>
+    <li>Cada subida y bajada completa es un <strong>ciclo de reloj</strong>.</li>
+    <li><strong>Frecuencia:</strong> cuántos ciclos hay por segundo. Se mide en Hertz (Hz).
+        <ul>
+            <li>1 MHz = un millón de ciclos por segundo.</li>
+            <li>1 GHz = mil millones de ciclos por segundo.</li>
+        </ul>
+    </li>
+    <li><strong>Periodo:</strong> lo que dura un ciclo. Ejemplo: a 1 GHz, cada ciclo dura 1 nanosegundo.</li>
+</ul>
+<h5>¿Para qué se necesita?</h5>
+<ul>
+    <li>El CPU ejecuta las instrucciones paso por paso (buscar, decodificar, ejecutar), y cada paso se marca con el reloj.</li>
+    <li>Sincroniza al CPU, la memoria y los buses.</li>
+    <li>Sin reloj no habría orden: cada componente iría a su propio ritmo.</li>
+</ul>
+<figure class="fig"><img src="imagenes/u3_senal_reloj.png" alt="Señal de reloj: onda cuadrada de periodo T entre 0 y 10 V"><figcaption>Señal de reloj: onda cuadrada con periodo T.</figcaption></figure>
+<p class="nota">Más frecuencia normalmente significa más velocidad, pero también más calor y más consumo de energía.</p>
+
+<!-- ===================== 3.1.7 ===================== -->
+<h4 id="s-3-1-7">3.1.7 Circuitos de control</h4>
+<p>Son los componentes electrónicos (controladores) encargados de gestionar, coordinar y sincronizar la transferencia de datos entre la CPU/memoria y los dispositivos periféricos.</p>
+<p><strong>¿Qué hacen?</strong> Interpretan las órdenes de la CPU, gestionan las señales de reloj y verifican el estado del periférico (ocupado, listo, error) antes de transferir datos.</p>
+<h5>Componentes clave</h5>
+<ul>
+    <li><strong>Registros de estado, control y datos:</strong> almacenan las órdenes, el estado actual y los datos en tránsito.</li>
+    <li><strong>Lógica de decodificación:</strong> reconoce la dirección específica del dispositivo asignada por el sistema.</li>
+</ul>
+<h5>Mecanismos de operación</h5>
+<div class="info-grid">
+    <div class="info-card"><h5>E/S programada</h5><p>La CPU consulta constantemente si el circuito está listo (polling).</p></div>
+    <div class="info-card"><h5>Interrupciones</h5><p>El circuito de control avisa a la CPU solo cuando necesita atención.</p></div>
+    <div class="info-card"><h5>DMA</h5><p>El circuito transfiere bloques de datos directamente a la RAM sin saturar la CPU.</p></div>
+</div>
+
+<!-- ===================== 3.1.8 ===================== -->
+<h4 id="s-3-1-8">3.1.8 Controles de video</h4>
+<p>Los controles de video, también llamados controladores de video o adaptadores gráficos, son componentes encargados de procesar y enviar la información visual desde la computadora hacia un monitor o pantalla.</p>
+<h5>Puntos clave</h5>
+<ul>
+    <li><strong>Función principal:</strong> convierten los datos digitales generados por la computadora en señales que pueden ser interpretadas por una pantalla.</li>
+    <li><strong>Intermediario entre CPU y monitor:</strong> reciben instrucciones de la CPU y de la memoria, procesan las imágenes y controlan su presentación.</li>
+    <li><strong>Memoria de video:</strong> utilizan una memoria propia, conocida como VRAM, para almacenar temporalmente:
+        <ul>
+            <li>Imágenes.</li>
+            <li>Colores.</li>
+            <li>Texturas.</li>
+            <li>Cuadros o frames.</li>
+            <li>Información de resolución.</li>
+        </ul>
+    </li>
+    <li><strong>Procesador gráfico:</strong> muchos controladores incluyen una GPU, especializada en realizar cálculos gráficos de forma más rápida que la CPU.</li>
+</ul>
+<figure class="fig fig-chica"><img src="imagenes/u3_gpu_nvidia.png" alt="Chip GPU Nvidia sobre una tarjeta gráfica"><figcaption>Procesador gráfico (GPU) de una tarjeta de video.</figcaption></figure>
+
+<!-- ===================== 3.2 ===================== -->
+<h3 id="s-3-2">3.2 Aplicaciones</h3>
+<p>El punto de Aplicaciones aborda cómo el hardware (procesadores, buses, memoria y periféricos) se diseña, selecciona y optimiza para atender tareas o entornos de cómputo específicos.</p>
+<ul>
+    <li><strong>Adecuación de hardware:</strong> evalúa la potencia de procesamiento, el ancho de banda y la capacidad de E/S necesarios según el tipo de software (por ejemplo, cómputo gráfico, procesamiento en tiempo real o bases de datos).</li>
+    <li><strong>Integración sistema-periférico:</strong> analiza la relación entre los controladores del chipset, la memoria y las interfaces físicas (Entrada/Salida, Almacenamiento y Fuentes de Alimentación) para garantizar que el sistema opere con estabilidad y eficiencia.</li>
+    <li>Las aplicaciones sirven de enlace entre las especificaciones técnicas de la arquitectura y las necesidades prácticas del usuario o la industria.</li>
+</ul>
+<figure class="fig fig-chica"><img src="imagenes/u3_aplicaciones.png" alt="Ilustración de dispositivos, nube, servidores y bases de datos interconectados"><figcaption>Aplicaciones: el hardware adaptado a las necesidades del usuario o la industria.</figcaption></figure>
+
+<!-- ===================== 3.2.1 ===================== -->
+<h4 id="s-3-2-1">3.2.1 Entrada / Salida</h4>
+<p>Son todos los aparatos que le sirven a la computadora para recibir información (entrada) y para mostrarla o sacarla (salida).</p>
+<h5>Ejemplos</h5>
+<ul>
+    <li><strong>Entrada:</strong> teclado, mouse, micrófono, cámara, escáner.</li>
+    <li><strong>Salida:</strong> monitor, bocinas, impresora, proyector.</li>
+    <li><strong>Entrada y salida a la vez:</strong> pantalla touch, USB, tarjeta de red, disco duro externo.</li>
+</ul>
+<figure class="fig"><img src="imagenes/u3_dispositivos_es.png" alt="Dispositivos de entrada (micrófono, webcam, mouse, escáner, teclado) y de salida (proyector, auriculares, monitor, impresora, altavoces)"><figcaption>Dispositivos de entrada y de salida.</figcaption></figure>
+<h5>¿Cómo se conectan?</h5>
+<p>Por puertos y conectores como USB, HDMI, audio, Ethernet o Bluetooth. Cada dispositivo tiene un controlador (un chip pequeño) que sirve de «traductor» entre el dispositivo y la computadora, porque cada uno habla a su manera.</p>
+<h5>¿Cómo se comunica la CPU con ellos? Hay tres formas</h5>
+<ol>
+    <li><strong>E/S programada:</strong> la CPU está preguntando todo el tiempo «¿ya terminaste?». Gasta mucho tiempo.</li>
+    <li><strong>Por interrupciones:</strong> el dispositivo le avisa a la CPU cuando ya terminó, y mientras tanto la CPU hace otras cosas.</li>
+    <li><strong>DMA:</strong> el dispositivo pasa los datos directo a la memoria sin molestar a la CPU.</li>
+</ol>
+
+<!-- ===================== 3.2.2 ===================== -->
+<h4 id="s-3-2-2">3.2.2 Almacenamiento</h4>
+<p>El almacenamiento es el subsistema encargado de conservar instrucciones y datos. Se organiza en una jerarquía que equilibra costo, velocidad y capacidad a lo largo de los buses del sistema.</p>
+<h5>¿Cómo se organiza la jerarquía?</h5>
+<ol>
+    <li><strong>Registros del procesador:</strong> almacenamiento ultra rápido integrado directamente en la CPU.</li>
+    <li><strong>Memoria caché (L1, L2, L3):</strong> memoria SRAM integrada/cercana a la CPU que almacena datos de acceso frecuente para reducir la latencia del bus.</li>
+    <li><strong>Memoria principal (RAM):</strong> memoria volátil de acceso aleatorio (DRAM) conectada mediante el bus de datos donde residen los programas en ejecución.</li>
+    <li><strong>Almacenamiento secundario / masivo:</strong> dispositivos no volátiles (SSD NVMe/SATA, HDD) conectados mediante controladores de E/S.</li>
+</ol>
+<h5>Mecanismos arquitectónicos clave</h5>
+<ul>
+    <li><strong>Principio de localidad:</strong> espacial y temporal (base para que la caché funcione).</li>
+    <li><strong>Mapeo de memoria / espacio de direcciones:</strong> la CPU usa el bus de direcciones para ubicar cada celda de almacenamiento.</li>
+    <li><strong>Acceso Directo a Memoria (DMA):</strong> permite que el almacenamiento secundario transfiera bloques completos hacia la RAM sin intervenir la CPU.</li>
+</ul>
+
+<!-- ===================== 3.2.3 ===================== -->
+<h4 id="s-3-2-3">3.2.3 Fuentes de alimentación</h4>
+<p>Todos los electrodomésticos cotidianos, como televisores, computadoras o radios, cuentan con una fuente de alimentación que les permite obtener energía de la red eléctrica en los diferentes voltajes requeridos. Además, este componente proporciona cierto grado de protección frente a las eventuales fluctuaciones del suministro eléctrico, como la sobretensión.</p>
+<p>Las fuentes de alimentación pueden ser de dos tipos: lineales o conmutativas.</p>
+<div class="info-grid">
+    <div class="info-card">
+        <h5>Fuentes de alimentación lineales</h5>
+        <p>Sus componentes están dispuestos de manera sucesiva, conforme al siguiente esquema:</p>
+        <ul>
+            <li>Transformador (reductor de tensión).</li>
+            <li>Rectificador (conversión de voltaje alterno a onda completa).</li>
+            <li>Filtro (conversión de onda completa a continua).</li>
+            <li>Regulación (mantenimiento del voltaje de salida ante variaciones en la carga).</li>
+        </ul>
+        <p>Es un tipo de fuente menos eficiente, debido a que parte de la energía se convierte en calor durante la regulación. Sin embargo, posee un bajo costo y un diseño compacto.</p>
+    </div>
+    <div class="info-card">
+        <h5>Fuentes de alimentación conmutativas</h5>
+        <p>Operan a través de la transformación de la energía mediante transistores polarizados inversamente. Su esquema de componentes es:</p>
+        <ul>
+            <li>Rectificador.</li>
+            <li>Conmutador.</li>
+            <li>Transformador.</li>
+            <li>Otro rectificador.</li>
+            <li>Salida.</li>
+        </ul>
+        <p>Esto les permite operar de manera mucho más eficiente que las fuentes lineales, ya que tienen menor tamaño y menor calentamiento.</p>
+    </div>
+</div>
+<figure class="fig fig-chica"><img src="imagenes/u3_fuente_alimentacion.png" alt="Ventilador de una fuente de alimentación de computadora"><figcaption>Fuente de alimentación de una computadora.</figcaption></figure>
+
+<!-- ===================== 3.3 ===================== -->
+<h3 id="s-3-3">3.3 Ambientes de servicio</h3>
+<p>Estos hacen referencia a las infraestructuras y plataformas de cómputo (hardware, servidores, redes y almacenamiento) diseñadas para respaldar, ejecutar y mantener operativas las aplicaciones de software que prestan servicios a distintos sectores.</p>
+<p>Se organizan y configuran los recursos informáticos para garantizar aspectos clave como:</p>
+<ul>
+    <li>Que el servicio esté activo cuando se necesite.</li>
+    <li>Que el sistema pueda crecer si aumenta la cantidad de usuarios o datos.</li>
+    <li>Que la información esté protegida y el sistema no se caiga ante un error.</li>
+</ul>
+<p><strong>Cada ambiente exige un diseño de hardware diferente:</strong> no se requiere la misma arquitectura para un punto de venta en un negocio local, que para un servidor industrial en una fábrica, o un centro de datos de comercio electrónico con millones de visitas simultáneas.</p>
+<figure class="fig fig-chica"><img src="imagenes/u3_ambientes_servicio.png" alt="Persona programando en varias laptops y monitores"><figcaption>Ambientes de servicio: infraestructura que respalda las aplicaciones.</figcaption></figure>
+
+<!-- ===================== 3.3.1 ===================== -->
+<h4 id="s-3-3-1">3.3.1 Negocios</h4>
+<h5>¿Qué es?</h5>
+<p>Es cómo se usa la arquitectura de computadoras dentro de una empresa o negocio, o sea, qué equipos necesita para trabajar bien.</p>
+<h5>¿Qué se usa en un negocio?</h5>
+<ul>
+    <li><strong>Computadoras de escritorio y laptops</strong> para el trabajo diario: facturar, hacer documentos, atender clientes.</li>
+    <li><strong>Servidores</strong> para guardar la información de la empresa (clientes, ventas, inventario) y compartirla entre todos.</li>
+    <li><strong>Redes</strong> (cableadas y WiFi) para que todo esté conectado.</li>
+    <li><strong>Punto de venta (TPV):</strong> caja, lector de código de barras, impresora de tickets, terminal de tarjetas.</li>
+    <li><strong>Sistemas de gestión</strong> como ERP o sistemas de inventario, para controlar productos, compras y ventas.</li>
+    <li><strong>Respaldo de datos o nube</strong> para no perder información.</li>
+</ul>
+<h5>Ejemplo</h5>
+<p>Una tienda tiene su caja con lector de códigos (E/S), una computadora que registra la venta, un servidor que actualiza el inventario y una red que conecta todo, así cuando vendes algo el inventario se descuenta solo.</p>
+<figure class="fig fig-chica"><img src="imagenes/u3_punto_de_venta.png" alt="Punto de venta con pantalla, lector de códigos, impresora de tickets, terminal de tarjetas y caja"><figcaption>Punto de venta (TPV): caja, lector de código de barras, impresora de tickets y terminal de tarjetas.</figcaption></figure>
+
+<!-- ===================== 3.3.2 ===================== -->
+<h4 id="s-3-3-2">3.3.2 Industria</h4>
+<p>Es el sector tecnológico y comercial dedicado al diseño, fabricación y comercialización de los componentes fundamentales del hardware (procesadores, memorias, chipsets y buses) que impulsan la computación moderna.</p>
+<h5>¿Qué abarca?</h5>
+<ul>
+    <li><strong>Diseñadores fabless (sin fábrica):</strong> empresas que crean las arquitecturas e instrucciones (ej. Nvidia, AMD, Apple, Qualcomm) y licencian diseños (ej. ARM, RISC-V).</li>
+    <li><strong>Fundidoras (foundries):</strong> fabricantes especializados en litografía de semiconductores en obleas de silicio (ej. TSMC, Samsung Foundry, Intel Foundry).</li>
+    <li><strong>Empresas EDA e IP:</strong> proveedores de software de diseño de circuitos y bloques de propiedad intelectual (ej. Synopsys, Cadence).</li>
+</ul>
+<h5>Modelos arquitectónicos dominantes</h5>
+<div class="info-grid">
+    <div class="info-card"><h5>x86</h5><p>Dominante en computadoras de escritorio y servidores/data centers (Intel, AMD).</p></div>
+    <div class="info-card"><h5>ARM</h5><p>Dominante en dispositivos móviles, eficiencia energética e infraestructura cloud moderna.</p></div>
+    <div class="info-card"><h5>RISC-V</h5><p>Arquitectura de código abierto en rápido crecimiento para sistemas embebidos e IA.</p></div>
+</div>
+<h5>Tendencias e impacto económico</h5>
+<ul>
+    <li><strong>Aceleradores de IA:</strong> arquitecturas diseñadas específicamente para procesamiento matricial y paralelo (GPUs, TPUs, NPUs).</li>
+    <li><strong>Geopolítica y cadena de suministro:</strong> industria crítica global concentrada en puntos clave de manufactura y empaquetado avanzado.</li>
+</ul>
+
+<!-- ===================== 3.3.3 ===================== -->
+<h4 id="s-3-3-3">3.3.3 Comercio electrónico</h4>
+<p>El comercio electrónico es el proceso de compraventa de bienes y servicios a través de Internet. Implica el intercambio de productos o servicios entre empresas, consumidores o ambos.</p>
+<p>Hoy en día, el comercio electrónico puede referirse al comercio entre empresas o a transacciones comerciales internas. También puede aplicarse a, por ejemplo:</p>
+<ul>
+    <li>Las tiendas online de los minoristas multicanal con ubicaciones físicas.</li>
+    <li>Plataformas de economía colaborativa que facilitan la compra de servicios como viajes compartidos.</li>
+    <li>Sitios de redes sociales como Facebook, donde los consumidores interactúan con el llamado comercio social.</li>
+    <li>Organizaciones que venden productos digitales para uso empresarial.</li>
+</ul>
+<figure class="fig fig-chica"><img src="imagenes/u3_comercio_electronico.png" alt="Ilustración de comercio electrónico con compras en línea, entregas y pagos"><figcaption>Comercio electrónico.</figcaption></figure>
+
+<!-- ===================== 3.4 MEMORIAS ===================== -->
+<h3 id="s-3-4">3.4 Memorias</h3>
+<p>Memorias y gamas: la memoria RAM y su evolución (DDR3, DDR4 y DDR5), así como la clasificación de los equipos en gamas baja, media y alta.</p>
+
+<h4 id="s-3-4-1">3.4.1 ¿Qué es la memoria RAM?</h4>
+<p>La <strong>RAM (Random Access Memory)</strong> es esencial para que un ordenador almacene y acceda rápidamente a grandes cantidades de datos. Funciona como un búfer, almacenando información temporalmente mientras es procesada por la CPU.</p>
+<p>La memoria RAM se mide en gigabytes (GB), comenzando desde 4 GB hasta 32 GB o más, y ha avanzado en los últimos años debido a la demanda de los consumidores. La velocidad de la RAM es crucial, especialmente para la multitarea y los juegos, que requieren más RAM y acceso más rápido.</p>
+<p>La RAM también permite una puesta en marcha más rápida de las aplicaciones, reduciendo los tiempos de carga. Invertir en capacidad y velocidad de RAM ayuda a que las computadoras portátiles funcionen sin problemas ni demoras.</p>
+<div class="fig-par">
+<figure class="fig fig-chica"><img src="imagenes/u3m_ram_chips.png" alt="Chips de memoria RAM sobre un módulo"><figcaption>Chips de un módulo de memoria RAM.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_ram_azul.png" alt="Módulo de memoria RAM con circuitos verdes sobre fondo azul"><figcaption>Módulo de memoria RAM.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_ram_arquitectura.png" alt="Arquitectura de memoria RAM: módulo con chips y circuitos"><figcaption>Arquitectura de memoria RAM (ihardware.info).</figcaption></figure>
+</div>
+
+<h4 id="s-3-4-2">3.4.2 ¿Cómo funcionan?</h4>
+<p>Su función principal es guardar de forma temporal los datos de los programas y aplicaciones que estás usando en el momento para que el procesador (CPU) pueda acceder a ellos de manera casi instantánea.</p>
+<ul>
+    <li><strong>Lectura y escritura rápida:</strong> a diferencia del disco duro o SSD (que guardan la información a largo plazo aunque apagues el equipo), la RAM es volátil: cuando apagas o reinicias el dispositivo, todo lo que está en la RAM se borra.</li>
+    <li><strong>Intermediario con el procesador:</strong> cuando abres un juego o un navegador, el sistema operativo carga los archivos necesarios desde el almacenamiento principal (lento) hacia la RAM (extremadamente rápida). El procesador lee y escribe directamente en la RAM para ejecutar tus acciones sin retrasos.</li>
+    <li><strong>Acceso aleatorio:</strong> significa que el procesador puede acceder a cualquier parte de la memoria de forma directa en el mismo tiempo, sin tener que leer los datos en un orden secuencial (como pasaba en las cintas antiguas).</li>
+    <li><strong>Estructura física interna:</strong> a nivel microscópico, la RAM está compuesta por millones (o miles de millones) de diminutos condensadores y transistores organizados en una matriz de filas y columnas. Cada intersección en esta cuadrícula forma una celda de memoria que almacena un bit de datos (un 0 o un 1), dependiendo de si el condensador está cargado o descargado eléctricamente.</li>
+</ul>
+<figure class="fig"><img src="imagenes/u3m_como_funciona.png" alt="Infografía de cómo funciona la memoria RAM: lectura y escritura rápida, intermediario con el procesador, acceso aleatorio y estructura física interna"><figcaption>Cómo funciona la memoria RAM: 1) lectura y escritura rápida, 2) intermediario con el procesador, 3) acceso aleatorio, 4) estructura física interna (matriz de celdas con condensador y transistor).</figcaption></figure>
+
+<h4 id="s-3-4-3">3.4.3 Características</h4>
+<p>Existen diferentes tipos de memoria RAM, como la <strong>DRAM</strong>, que es la más común, y la <strong>SRAM</strong>, que es más rápida pero también más costosa. Actualmente, las versiones más utilizadas son DDR3, DDR4 y DDR5.</p>
+<p>Entre sus características principales se encuentran la <strong>capacidad</strong>, medida en gigabytes (GB), la <strong>velocidad</strong>, medida en megahertz (MHz), y la <strong>latencia</strong>, que indica el tiempo de respuesta. Estos factores influyen directamente en el rendimiento del equipo.</p>
+<div class="fig-par">
+<figure class="fig fig-chica"><img src="imagenes/u3m_ram.png" alt="Módulos de memoria RAM"><figcaption>Memoria RAM.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_dram.png" alt="Módulo de memoria DRAM"><figcaption>Memoria DRAM.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_sram.png" alt="Chip de memoria SRAM"><figcaption>Memoria SRAM.</figcaption></figure>
+</div>
+<div class="fig-par">
+<figure class="fig fig-chica"><img src="imagenes/u3m_ddr3_modulo.png" alt="Módulo de memoria DDR3"><figcaption>DDR3.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_ddr4_modulo.png" alt="Módulo de memoria DDR4 ADATA"><figcaption>DDR4.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_ddr5_modulo.png" alt="Módulo de memoria DDR5"><figcaption>DDR5.</figcaption></figure>
+</div>
+
+<h4 id="s-3-4-4">3.4.4 Tipos de memorias</h4>
+<h5>Tipos principales</h5>
+<ul>
+    <li><strong>DDR (DDR3, DDR4, DDR5):</strong> las más usadas actualmente.</li>
+    <li><strong>SRAM:</strong> más rápida, pero costosa (usada en caché).</li>
+    <li><strong>DRAM:</strong> más común y económica.</li>
+    <li><strong>Capacidades (GB):</strong> 4 GB, 8 GB, 16 GB, etc.</li>
+    <li><strong>Velocidad (MHz):</strong> influye en el rendimiento.</li>
+</ul>
+<figure class="fig fig-chica"><img src="imagenes/u3m_tipos.png" alt="Ilustración de DDR5, SRAM (caché), DRAM, capacidades en GB y velocidad en MHz"><figcaption>Tipos de memorias: DDR5, SRAM (caché), DRAM, capacidades (4, 8 y 16 GB) y velocidad (MHz).</figcaption></figure>
+
+<h4 id="s-3-4-5">3.4.5 Memoria DDR3</h4>
+<h5>¿Qué es?</h5>
+<p>La memoria DDR3, cuyo nombre completo es <strong>Double Data Rate type 3 Synchronous Dynamic Random-Access Memory</strong>, es un tipo de memoria RAM. Como toda RAM, es volátil, lo que significa que pierde la información al apagarse el equipo. Su principal característica es que transmite datos dos veces por ciclo de reloj, lo que le permite alcanzar velocidades superiores a las generaciones anteriores.</p>
+<h5>Características</h5>
+<p>DDR3 se distingue por varias mejoras técnicas:</p>
+<ul>
+    <li>Funciona con un voltaje reducido, entre 1.5 y 1.65 voltios, lo que implica menor consumo energético.</li>
+    <li>Sus frecuencias de operación van desde 1066 MHz hasta 2133 MHz.</li>
+    <li>Los módulos pueden tener capacidades desde 1 GB hasta 16 GB.</li>
+    <li>Posee 240 pines, con una muesca distinta a DDR2, lo que evita confusiones al instalarla.</li>
+</ul>
+<div class="fig-par">
+<figure class="fig fig-chica"><img src="imagenes/u3m_ddr3_4gb.png" alt="Módulo DDR3 de 4 GB, 1600 MHz CL11"><figcaption>Módulo DDR3 de 4 GB (1600 MHz, CL11).</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_ddr3_8gb.png" alt="Módulo DDR3 de 8 GB, 1333 MHz CL9"><figcaption>Módulo DDR3 de 8 GB (1333 MHz, CL9).</figcaption></figure>
+</div>
+<h5>Ventajas frente a DDR2</h5>
+<p>Comparada con DDR2, DDR3 ofrece mayor ancho de banda, menor consumo eléctrico y mayor capacidad por módulo. Además, introdujo perfiles XMP que facilitan configuraciones de rendimiento para usuarios avanzados.</p>
+<h5>Limitaciones y transición a DDR4</h5>
+<p>Con el tiempo, DDR3 fue superada por DDR4, que ofrece velocidades más altas, menor consumo energético y mayor capacidad máxima. A partir de 2014, DDR4 comenzó a reemplazar a DDR3 en la mayoría de los equipos nuevos.</p>
+<h5>Aplicaciones y relevancia histórica</h5>
+<p>Durante casi una década, DDR3 fue el estándar en PCs, laptops y servidores. Gracias a ella, se pudieron ejecutar programas más exigentes en gráficos, multitarea y virtualización. Aunque hoy ya no se fabrica masivamente, sigue presente en equipos antiguos.</p>
+
+
+<h4 id="s-3-4-6">3.4.6 Memoria DDR4</h4>
+<h5>¿Qué es?</h5>
+<p>La memoria DDR4 (Double Data Rate 4) es un tipo de memoria RAM muy popular utilizada en computadoras y laptops. Es la cuarta generación de esta tecnología y se encarga de almacenar temporalmente los datos que el procesador necesita usar al momento.</p>
+<h5>Características</h5>
+<ul>
+    <li><strong>Velocidades:</strong> operan típicamente entre 2133 MHz y 3200 MHz, aunque los módulos de alto rendimiento pueden superar los 4000 MHz.</li>
+    <li><strong>Capacidad:</strong> los módulos individuales para consumidores suelen llegar hasta los 32 GB o 64 GB, permitiendo configuraciones de sistema de gran volumen.</li>
+    <li><strong>Formato físico:</strong> utilizan un conector de 288 pines para computadoras de escritorio (DIMM) y 260 pines para laptops (SODIMM).</li>
+    <li><strong>Eficiencia:</strong> funcionan a un voltaje estándar de 1.2 V, lo que reduce el consumo de energía hasta en un 40 % respecto a la generación anterior.</li>
+</ul>
+<figure class="fig fig-chica"><img src="imagenes/u3m_ddr4_8gb.png" alt="Módulo DDR4 de 8 GB a 3200 MHz para portátil"><figcaption>Memoria DDR4 de 8 GB a 3200 MHz para portátil.</figcaption></figure>
+
+<h4 id="s-3-4-7">3.4.7 Memoria DDR5</h4>
+<h5>¿Qué es?</h5>
+<p>La memoria DDR5 (Double Data Rate 5) es la quinta y más avanzada generación de memoria RAM para computadoras, diseñada para ofrecer casi el doble de ancho de banda y velocidad que su antecesora (DDR4) mediante frecuencias que superan los 8000 MHz, una arquitectura interna de doble canal por módulo, tecnología de corrección de errores integrada (On-Die ECC) y un chip de gestión de energía propio (PMIC) que optimiza el consumo a solo 1.1 V para lograr una mayor estabilidad en tareas de alto rendimiento.</p>
+<h5>Características</h5>
+<ul>
+    <li><strong>Velocidad y rendimiento:</strong> la velocidad base comienza en 4800 MT/s, superando los máximos comunes de DDR4 (3200–3600 MHz).</li>
+    <li><strong>Mayor capacidad:</strong> los módulos individuales pueden alcanzar 64 GB o 128 GB, ideales para estaciones de trabajo de alto rendimiento.</li>
+    <li><strong>Eficiencia energética:</strong> funciona a un voltaje estándar de 1.1 V (frente a 1.2 V o 1.35 V de DDR4), lo que resulta en un menor consumo de energía por bit transmitido.</li>
+    <li><strong>Arquitectura de canales:</strong> DDR5 utiliza dos canales de 32 bits independientes por módulo para mejorar la eficiencia en la transferencia de datos.</li>
+    <li><strong>Gestión de energía (PMIC):</strong> incorpora el circuito integrado de gestión de energía (PMIC) directamente en el módulo, mejorando la integridad de la señal y la estabilidad.</li>
+</ul>
+<figure class="fig"><img src="imagenes/u3m_ddr5_estructura.png" alt="Estructura de un módulo DDR5 con PMIC, SPD Hub y DRAM, comparada con DDR4 y DDR3"><figcaption>Estructura del módulo DDR5 (PMIC, SPD Hub, inductores, capacitores, resistencias, PCB y DRAM) comparada con DDR4 y DDR3.</figcaption></figure>
+
+<h4 id="s-3-4-8">3.4.8 Ejemplos</h4>
+<h5>Corsair Vengeance (y Vengeance Pro)</h5>
+<p>Sus disipadores de aluminio son ideales para mantener la estabilidad si el procesador está bajo mucha carga. La versión «Pro» permitía un overclocking muy estable a 2133 MHz o más.</p>
+<figure class="fig fig-chica"><img src="imagenes/u3m_corsair_vengeance.png" alt="Módulos Corsair Vengeance Pro RGB instalados en una placa base"><figcaption>Corsair Vengeance Pro.</figcaption></figure>
+<h5>G.Skill Ripjaws X</h5>
+<p>Fiabilidad en plataformas tanto de Intel como de AMD (serie FX). Ofrece latencias muy bajas (CL9 en modelos de 1600 MHz), lo que compensa la baja frecuencia frente a estándares modernos.</p>
+<figure class="fig fig-chica"><img src="imagenes/u3m_gskill_ripjaws.png" alt="Módulos G.Skill Ripjaws X azules"><figcaption>G.Skill Ripjaws X.</figcaption></figure>
+
+<!-- ===================== 3.5 GAMAS ===================== -->
+<h3 id="s-3-5">3.5 Gamas</h3>
+<h4 id="s-3-5-1">3.5.1 ¿Qué es una gama?</h4>
+<p>Una gama es el nivel o jerarquía con el que se clasifican los dispositivos en categorías (alta, media y baja) según su rendimiento, materiales de construcción y precio, teniendo en el procesador y las cámaras sus mayores elementos diferenciadores.</p>
+<div class="info-grid">
+    <div class="info-card"><h5>Gama alta</h5><p>Reúne lo último en tecnología, incorporando máxima potencia, pantallas AMOLED de alta calidad e inteligencia artificial avanzada.</p></div>
+    <div class="info-card"><h5>Gama media</h5><p>Se posiciona como el punto de equilibrio ideal al ofrecer un rendimiento sólido a un precio accesible.</p></div>
+    <div class="info-card"><h5>Gama baja</h5><p>Prioriza la asequibilidad con características funcionales diseñadas para cubrir tareas cotidianas y básicas.</p></div>
+</div>
+<figure class="fig fig-chica"><img src="imagenes/u3m_gama.png" alt="Ilustración de la nube conectada a un teléfono móvil, una portátil y un ordenador de sobremesa"><figcaption>Gamas: teléfono móvil, portátil y ordenador de sobremesa conectados a la nube.</figcaption></figure>
+
+<h4 id="s-3-5-2">3.5.2 Gama baja</h4>
+<h5>¿Qué es?</h5>
+<p>Una PC de gama baja es un equipo económico diseñado para tareas básicas como navegar por internet, usar programas de oficina y reproducir contenido multimedia, con componentes de menor potencia y capacidad que los de gamas media o alta. Su principal ventaja es el precio accesible, aunque su rendimiento es limitado para aplicaciones exigentes como videojuegos modernos o software de diseño.</p>
+<h5>Características</h5>
+<ul>
+    <li><strong>Procesador:</strong> modelos básicos como Intel Core i3, Pentium, o AMD Ryzen 3, que ofrecen suficiente potencia para tareas simples.</li>
+    <li><strong>Memoria RAM:</strong> generalmente 4 GB a 8 GB, lo que permite multitarea ligera pero con limitaciones si se abren muchos programas a la vez.</li>
+    <li><strong>Almacenamiento:</strong> suelen incluir discos duros tradicionales (HDD) de 500 GB a 1 TB, aunque algunos modelos más recientes integran SSD pequeños (128–256 GB) para mejorar la velocidad.</li>
+    <li><strong>Tarjeta gráfica:</strong> normalmente integrada en el procesador, adecuada para video en HD y juegos muy ligeros, pero insuficiente para gráficos avanzados.</li>
+    <li><strong>Precio:</strong> son las opciones más económicas del mercado, pensadas para estudiantes, oficinas pequeñas o usuarios con necesidades básicas.</li>
+</ul>
+<div class="fig-par">
+<figure class="fig fig-chica"><img src="imagenes/u3m_baja_collage.png" alt="Computadoras antiguas de gama baja"><figcaption>Equipos de gama baja.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_baja_pc_retro.png" alt="Computadora retro con monitor CRT"><figcaption>Computadora retro.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_baja_pc_crt.png" alt="Computadora de escritorio con monitor CRT"><figcaption>Computadora de escritorio de gama baja.</figcaption></figure>
+</div>
+
+<h4 id="s-3-5-3">3.5.3 Gama media</h4>
+<h5>¿Qué es?</h5>
+<p>La gama media se caracteriza por ofrecer un equilibrio entre rendimiento, precio y funcionalidad. Este tipo de equipos está diseñado para usuarios que necesitan más que tareas básicas, pero que no requieren la máxima potencia de una computadora de gama alta. En cuanto al rendimiento, las PCs de gama media suelen contar con procesadores de buena capacidad, como los de Intel (Core i5) o AMD (Ryzen 5). Estos permiten realizar múltiples tareas al mismo tiempo, como trabajar con documentos, navegar en internet, programar, editar contenido ligero e incluso jugar algunos videojuegos sin problemas.</p>
+<h5>Características</h5>
+<ul>
+    <li>En memoria y almacenamiento, normalmente incluyen entre 8 y 16 GB de RAM, lo que garantiza un funcionamiento fluido.</li>
+    <li>Suelen incorporar discos SSD, que hacen que el sistema operativo y los programas carguen más rápido en comparación con los discos duros tradicionales.</li>
+    <li>Incluyen tarjetas gráficas dedicadas, como las de NVIDIA o AMD, lo que permite ejecutar juegos o programas de diseño a un nivel intermedio.</li>
+    <li>Las computadoras de gama media son ideales para estudiantes, oficinistas y usuarios en general, ya que ofrecen un buen desempeño en la mayoría de las tareas diarias sin tener un costo tan elevado como los equipos de gama alta.</li>
+</ul>
+<div class="fig-par">
+<figure class="fig fig-chica"><img src="imagenes/u3m_media_pc_roja.png" alt="Computadora gamer con monitor y gabinete con ventiladores rojos"><figcaption>Equipo de gama media con gabinete gamer.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_media_core_i5.png" alt="Equipo con Core i5 de 4.ª gen, 8 GB de RAM, 240 GB SSD y 1 TB HDD"><figcaption>Equipo con Core i5, 8 GB de RAM, SSD de 240 GB y HDD de 1 TB.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_media_lenovo.png" alt="Computadora de escritorio Lenovo con monitor, teclado y mouse"><figcaption>Computadora de escritorio de gama media.</figcaption></figure>
+</div>
+
+<h4 id="s-3-5-4">3.5.4 Gama alta</h4>
+<h5>¿Qué es?</h5>
+<p>La gama alta se refiere a los dispositivos electrónicos como celulares, laptops o tablets. La gama alta ofrece lo mejor en tecnología, materiales y rendimiento. Son los modelos premium de cada marca, diseñados para usuarios que buscan potencia, durabilidad y funciones avanzadas.</p>
+<h5>Características</h5>
+<ul>
+    <li><strong>Rendimiento:</strong> procesadores más potentes (Snapdragon, Apple A-series) y gran memoria RAM, asegurando rapidez y eficiencia.</li>
+    <li><strong>Cámaras:</strong> sistemas multicámara de alta resolución, enfoque en fotografía nocturna y grabación de video avanzada.</li>
+    <li><strong>Pantalla:</strong> paneles con alta resolución, altas tasas de refresco (120 Hz o más) y gran brillo (hasta 3500 nits).</li>
+    <li><strong>Construcción:</strong> materiales premium (cristal, titanio) y resistencia al agua/polvo, usualmente certificación IP68.</li>
+    <li><strong>Batería y carga:</strong> capacidad alta (sobre 5000 mAh) con carga rápida por cable (más de 100 W) e inalámbrica.</li>
+</ul>
+<div class="fig-par">
+<figure class="fig fig-chica"><img src="imagenes/u3m_alta_setup_1.png" alt="Setup gamer con monitor curvo y gabinete con iluminación RGB"><figcaption>Setup de gama alta.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_alta_setup_2.png" alt="Setup con monitor curvo y gabinete blanco con refrigeración líquida"><figcaption>Setup de gama alta con refrigeración líquida.</figcaption></figure>
+<figure class="fig fig-chica"><img src="imagenes/u3m_alta_componentes.png" alt="Componentes de gama alta: Ryzen 5 9600X, GeForce RTX 5060 y gabinete"><figcaption>Componentes de gama alta: AMD Ryzen 5 9600X y NVIDIA GeForce RTX 5060 (imagen de referencia).</figcaption></figure>
+</div>
+`
+            },
+            tema4: {
+                titulo: "04 - Procesamiento Paralelo",
+                descripcion: "Computación paralela y multiprocesamiento",
+                contenido: `
+                    <h2>Computación Paralela</h2>
+                    <p>Permite ejecutar múltiples instrucciones simultáneamente para mejorar el rendimiento.</p>
+
+                    <h3>4.1 Aspecto  Basicos de la Computacion Paralela</h3>
+                    <ul>
+                        <li>Paralelismo a Nivel de Instrucción</li>
+                        <li>Paralelismo a Nivel de Datos</li>
+                        <li>Paralelismo a Nivel de Tarea</li>
+                    </ul>
+
+                    <h3>4.2 Tipos de Computacion Paralela</h3>
+                    <p>Los procesadores comparten la misma memoria principal.</p>
+
+                    <h4>4.2.1 Clasificacion</h4>
+                    <p>Los procesadores tienen memoria propia y se comunican por paso de mensajes.</p>
+
+                    <h4>4.2.2 Arquitectura de Computadoras Secuenciales</h4>
+                    <ul>
+                        <li>Ring</li>
+                        <li>Mesh</li>
+                        <li>Tree</li>
+                        <li>Hypercube</li>
+                    </ul>
+
+                    <h4>4.2.3 Organizacion de Direcciones de Memoria</h4>
+                    <p>Convierten energía AC en DC y alimentan los componentes del equipo.</p>
+
+                    <h3>4.3 Sistema de Memoria(Compartida) Multiprocesadores</h3>
+                    <p>Convierten energía AC en DC y alimentan los componentes del equipo.</p>
+
+                    <h4>4.3.1 Redes de Interconexion Dinamica (Indirecta) Multiprocesadores</h4>
+                    <p>Convierten energía AC en DC y alimentan los componentes del equipo.</p>
+
+                    <h3>4.4 Sistema de Memoria Distribuida Multiprocesadores</h3>
+                    <p>Convierten energía AC en DC y alimentan los componentes del equipo.</p>
+
+                    <h4>4.4.1 Redes Interconexión Estáticas</h4>
+                    <p>Convierten energía AC en DC y alimentan los componentes del equipo.</p>
+
+                    <h3>4.5 Casos para Estudios </h3>
+                    <p>Convierten energía AC en DC y alimentan los componentes del equipo.</p>
+                `
+            }
+        };
+
+        
+        function construirIndice() {
+            const cont = document.getElementById('tema-contenido');
+            const titulos = cont.querySelectorAll('h2[id], h3[id], h4[id]');
+            if (!titulos.length) return;
+            let html = '<details open><summary><i class="fa-solid fa-list-ul"></i> Contenido de la unidad</summary><ul>';
+            titulos.forEach(h => {
+                const nivel = h.tagName.toLowerCase();
+                html += '<li class="toc-' + nivel + '"><a href="#' + h.id + '">' + h.textContent + '</a></li>';
+            });
+            html += '</ul></details>';
+            const toc = document.getElementById('tema-toc');
+            toc.innerHTML = html;
+            toc.style.display = 'block';
+        }
+
+        function irASeccion() {
+            const id = decodeURIComponent(window.location.hash.replace('#', ''));
+            if (!id) return;
+            const el = document.getElementById(id);
+            if (!el) return;
+            setTimeout(() => {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                el.classList.add('resaltado');
+                setTimeout(() => el.classList.remove('resaltado'), 2200);
+            }, 150);
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const tema = params.get('tema');
+
+        if (temas[tema]) {
+            document.getElementById('tema-titulo').textContent = temas[tema].titulo;
+            document.getElementById('tema-descripcion').textContent = temas[tema].descripcion;
+            document.getElementById('tema-contenido').innerHTML = temas[tema].contenido;
+            construirIndice();
+            irASeccion();
+        } else {
+            document.getElementById('tema-titulo').textContent = "Tema no encontrado";
+            document.getElementById('tema-descripcion').textContent = "No existe información para este tema.";
+            document.getElementById('tema-contenido').innerHTML = "<p>Regresa al índice para elegir otro tema.</p>";
+        }
+    </script>
+
+</body>
+</html>
